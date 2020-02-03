@@ -1,7 +1,6 @@
-import { RESISTER_START, REGISTER_SUCCESSst, REGISTER_FAILURE } from "../actions/registerUser";
+import { REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE } from "../actions/registerUser";
 
-export const stylist = [
-    {
+const stylist = {
         id: 1,
         name: "Bianca Severino",
         email: "biancasev@gmail.com",
@@ -10,15 +9,36 @@ export const stylist = [
         is_stylist: true, // defaults to false if not given
         profile_url: "https://avatars0.githubusercontent.com/u/10442143", // optional
         profile_info: "Hi this is my profile!" // optional
-    }
-]
+    };
 
-const registerReducer = (state = stylist, action) => {
+
+export const registerReducer = (state = stylist, action) => {
     switch(action.type) {
-        case RESISTER_START:
+        case REGISTER_START:
             return {
                 ...state,
-
-            }
-    }
-}
+                isLoading: true
+            };
+        case REGISTER_SUCCESS:
+            return {
+                ...state,
+                userType: action.userType,
+                username: action.username,
+                password: action.password,
+                email: action.email,
+                location: action.location,
+                isLoading: false
+            };
+        case REGISTER_FAILURE:
+            return {
+                ...state,
+                error: "",
+                userType: "",
+                username: "",
+                password: "",
+                email: "",
+                location: ""
+            };
+        default: return state;
+    };
+};
