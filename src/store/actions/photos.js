@@ -19,7 +19,7 @@ export const addPhoto = () => dispatch => {
         dispatch({ type: FETCHING_PHOTOS_SUCCESS, payload: res.data })
     })
     .catch(err => {
-        console.log("fetching users error", err) // most likely the payload will be err.response
+        console.log("fetching photo error", err) // most likely the payload will be err.response
         dispatch({ type: FETCHING_PHOTOS_FAILURE, payload: err})
     })
 };

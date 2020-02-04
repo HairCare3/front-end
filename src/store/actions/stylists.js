@@ -16,7 +16,7 @@ export const fetchStylists = () => dispatch => {
         dispatch({ type: FETCHING_STYLISTS_SUCCESS, payload: res.data })
     })
     .catch(err => {
-        console.log("fetching users error", err) // most likely the payload will be err.response
+        console.log("fetching stylist error", err) // most likely the payload will be err.response
         dispatch({ type: FETCHING_STYLISTS_FAILURE, payload: err})
     })
 };
@@ -30,7 +30,7 @@ export const fetchStylistsId = (id) => dispatch => {
         dispatch({ type: SINGLE_STYLISTS_SUCCESS, payload: res.data })
     })
     .catch(err => {
-        console.log("get user by id", err)
+        console.log("get stylist by id", err)
         dispatch({ type: SINGLE_STYLISTS_FAILURE })
     })
 };

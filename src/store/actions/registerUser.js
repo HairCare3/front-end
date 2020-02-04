@@ -19,7 +19,7 @@ export const registerUser = initialState => dispatch => {
     })
     .then(res => {
         console.log(res);
-        localStorage.setItem("token", res /*input correct res here*/ )
+        localStorage.setItem("token", res.data.payload )
         dispatch({ type: REGISTER_SUCCESS })
     })
     .catch(err =>{
