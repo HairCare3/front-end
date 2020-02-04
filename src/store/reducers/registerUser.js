@@ -1,6 +1,6 @@
 import { REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE } from "../actions/registerUser";
 
-const stylist = {
+const initialState = {
         id: 1,
         name: "Bianca Severino",
         email: "biancasev@gmail.com",
@@ -12,14 +12,13 @@ const stylist = {
     };
 
 
-export const registerReducer = (state = stylist, action) => {
+export const registerReducer = (state = initialState, action) => {
     switch(action.type) {
         case REGISTER_START:
             return {
                 ...state,
                 isLoading: true,
-                is_Stylist: true,
-                is_User: true
+                is_stylist: true
             };
         case REGISTER_SUCCESS:
             return {
@@ -29,9 +28,7 @@ export const registerReducer = (state = stylist, action) => {
                 password: action.password,
                 email: action.email,
                 location: action.location,
-                isLoading: false,
-                is_Stylist: true,
-                is_User: true
+                isLoading: false
             };
         case REGISTER_FAILURE:
             return {
@@ -41,9 +38,7 @@ export const registerReducer = (state = stylist, action) => {
                 username: "",
                 password: "",
                 email: "",
-                location: "",
-                is_Stylist: false,
-                is_User: false
+                location: ""
             };
         default: return state;
     };

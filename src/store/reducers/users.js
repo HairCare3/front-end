@@ -5,6 +5,7 @@ const users = {
     isFetching: false,
     isEditing: false,
     isDeleting: false,
+    is_User: true,
     userInfo: []
 };
 
