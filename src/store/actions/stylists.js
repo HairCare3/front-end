@@ -9,7 +9,7 @@ export const SINGLE_STYLISTS_START = "SINGLE_STYLISTS_START", SINGLE_STYLISTS_SU
 
 export const fetchStylists = () => dispatch => {
     dispatch({ type: FETCHING_STYLISTS_START })
-    axiosWithAuth()
+    axios
     .get("https://haircare-api-3.herokuapp.com/api/stylists")
     .then(res => {
         console.log(res) // most likely the payload will be res.data
@@ -17,14 +17,14 @@ export const fetchStylists = () => dispatch => {
     })
     .catch(err => {
         console.log("fetching stylist error", err) // most likely the payload will be err.response
-        dispatch({ type: FETCHING_STYLISTS_FAILURE, payload: err})
+        dispatch({ type: FETCHING_STYLISTS_FAILURE, payload: err.response})
     })
 };
 
 export const fetchStylistsId = (id) => dispatch => {
     dispatch({ type: SINGLE_STYLISTS_START })
     axios
-    .get(`https://haircare-api-3.herokuapp.com/api/users/${id}`)
+    .get(`https://haircare-api-3.herokuapp.com/api/stylists/${id}`)
     .then(res => {
         console.log(res)
         dispatch({ type: SINGLE_STYLISTS_SUCCESS, payload: res.data })

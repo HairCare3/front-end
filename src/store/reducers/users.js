@@ -1,14 +1,26 @@
 import { FETCHING_USERS_START, FETCHING_USERS_SUCCESS, FETCHING_USERS_FAILURE, SINGLE_USER_START, SINGLE_USER_SUCCESS, SINGLE_USER_FAILURE, EDIT_USER_START, EDIT_USER_SUCCESS, EDIT_USER_FAILURE, DELETE_USER_START, DELETE_USER_SUCCESS, DELETE_USER_FAILURE } from "../actions/users";
 
-const users = {
+const initialState = {
     error: "",
     isFetching: false,
     isEditing: false,
     isDeleting: false,
-    userInfo: []
+    users: [
+        {
+            id: 1, // automatically generated
+            username: "bianca",
+            name: "Bianca Severino",
+            email: "biancasev@gmail.com",
+            password: "password", // will not return in requests
+            location: "New Haven, CT",
+            is_stylist: false,
+            profile_url: "https://avatars0.githubusercontent.com/u/10442143",
+            profile_info: "Hi this is my profile!"
+        }
+    ]
 };
 
-export const userReducer = (state = users, action) => {
+export const userReducer = (state = initialState, action) => {
     switch (action.type) {
     case FETCHING_USERS_START:
         return {

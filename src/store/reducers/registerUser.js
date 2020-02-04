@@ -1,15 +1,9 @@
 import { REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE } from "../actions/registerUser";
 
 const stylist = {
-        id: 1,
-        name: "Bianca Severino",
-        email: "biancasev@gmail.com",
-        password: "password", // will not return in requests
-        location: "New Haven, CT",
-        is_stylist: true, // defaults to false if not given
-        profile_url: "https://avatars0.githubusercontent.com/u/10442143", // optional
-        profile_info: "Hi this is my profile!" // optional
-    };
+        username: "username",
+        password: "password"
+}
 
 
 export const registerReducer = (state = stylist, action) => {
