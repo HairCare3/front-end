@@ -4,6 +4,7 @@ import { counter } from "./counter";
 import { registerReducer } from "./registerUser";
 import { userReducer } from "./users";
 import { photoReducer } from "./photos";
+import { stylistReducer } from "./stylists"
 
 // Using combine reducers to break up reducers into different files
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
   counter,
   registerReducer,
   userReducer,
-  photoReducer
+  photoReducer,
+  stylistReducer
 });

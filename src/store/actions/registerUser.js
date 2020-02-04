@@ -12,10 +12,10 @@ export const registerUser = initialState => dispatch => {
     dispatch({ type: REGISTER_START })
     axios
     .post("https://haircare-api-3.herokuapp.com/auth/register", { 
-        username: initialState.username,
-        email: initialState.email,
-        password: initialState.password,
-        location: initialState.location
+        // username: initialState.username,
+        // email: initialState.email,
+        // password: initialState.password,
+        // location: initialState.location
     })
     .then(res => {
         console.log(res);
