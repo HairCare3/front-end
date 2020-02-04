@@ -1,5 +1,4 @@
 import { FETCHING_STYLISTS_START, FETCHING_STYLISTS_SUCCESS, FETCHING_STYLISTS_FAILURE, SINGLE_STYLISTS_START, SINGLE_STYLISTS_SUCCESS, SINGLE_STYLISTS_FAILURE } from "../actions/stylists";
-import { SINGLE_USER_FAILURE } from "../actions/users";
 
 const stylists = {
     error: "",
@@ -40,7 +39,7 @@ export const stylistReducer = (state = stylists, action) => {
             isFetching: false,
             stylistInfo: state.stylistInfo.map(stylist => stylist.id !== action.payload)
         };
-    case SINGLE_USER_FAILURE:
+    case SINGLE_STYLISTS_FAILURE:
         return {
             ...state,
             isFetching: false,

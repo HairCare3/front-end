@@ -7,11 +7,6 @@ export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE"
 
-// users
-// users by id
-// delete user by id
-// stylists
-// stylists by id
 
 export const registerUser = initialState => dispatch => {
     dispatch({ type: REGISTER_START })
