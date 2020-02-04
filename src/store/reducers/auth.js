@@ -2,7 +2,14 @@ import { AUTHENTICATE, START_LOGIN, LOGIN_FAILURE, SIGN_OUT } from "../actions/a
 
 const initialState = {
   token: localStorage.getItem("token"),
-  isLoading: false
+  isLoading: false,
+  username: "username",
+  password: "password",
+  email: "email@email.com",
+  location: "City, State",
+  is_stylist: true, // optional, will default to false if not given
+  // profile_url: "http://imgurl.com/img.jpg", // optional profile iamge
+  // profile_info: "I am the user's profile description. I am optional and have no character limit."
 };
 
 export const auth = (state = initialState, action) => {
@@ -15,7 +22,7 @@ export const auth = (state = initialState, action) => {
     case AUTHENTICATE:
       return {
         ...state,
-        userType: action.userType,
+        is_stylist: true,
         token: localStorage.getItem("token")
       };
     case LOGIN_FAILURE:
