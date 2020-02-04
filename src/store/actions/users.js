@@ -2,7 +2,7 @@ import axios from "axios"
 import axiosWithAuth from "../../utils/axiosWithAuth";
 
 // FETCHING USERS
-export const FETCHING_USERS_START = "FETCHING_USERS_START", FETCHING_USERS_SUCCESS = "FETCHING_USERS_SUCCESS", FECTHING_USERS_FAILURE = "FECTHING_USERS_FAILURE";
+export const FETCHING_USERS_START = "FETCHING_USERS_START", FETCHING_USERS_SUCCESS = "FETCHING_USERS_SUCCESS", FETCHING_USERS_FAILURE = "FETCHING_USERS_FAILURE";
 
 // SINGLE USER
 export const SINGLE_USER_START = "SINGLE_USER_START", SINGLE_USER_SUCCESS = "SINGLE_USER_SUCCESS", SINGLE_USER_FAILURE = "SINGLE_USER_FAILURE";
@@ -23,7 +23,7 @@ export const fetchUser = () => dispatch => {
     })
     .catch(err => {
         console.log("fetching users error", err) // most likely the payload will be err.response
-        dispatch({ type: FECTHING_USERS_FAILURE, payload: err})
+        dispatch({ type: FETCHING_USERS_FAILURE, payload: err})
     })
 };
 
