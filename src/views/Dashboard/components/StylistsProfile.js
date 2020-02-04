@@ -3,7 +3,7 @@ import { registerUser } from "../../../store/actions/registerUser";
 import { connect } from "react-redux";
 import { Wrapper, Linkton, Box, Card } from "bushido-strap";
 
-const Stylists = (props) => {
+const StylistsProfile = (props) => {
     console.log(props.stylists)
 
     // const pushStylists = props.registerUser
@@ -35,4 +35,4 @@ const mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { registerUser })(Stylists);
+export default connect(mapStateToProps, { registerUser })(StylistsProfile);

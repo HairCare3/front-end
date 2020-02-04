@@ -16,6 +16,7 @@ import ReduxCounter from "./views/ReduxCounter";
 // Using Web Font Loader for google fonts
 import WebFont from "webfontloader";
 import StylistsProfile from "./views/Dashboard/components/StylistsProfile";
+import CustomerProfile from "./views/Dashboard/components/CustomerProfile";
 
 // setting our font variables
 const h_font = "Comfortaa";
@@ -38,7 +39,8 @@ const App = () => {
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <PrivateRoute path="/counter" component={ReduxCounter} />
-      <Route path="/stylists" component={StylistsProfile} />
+      <Route path="/stylists-profile" component={StylistsProfile} />
+      <Route path="/profile" component={CustomerProfile} />
     </AppWrapper>
   );
 };
