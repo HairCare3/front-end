@@ -1,6 +1,10 @@
 import { FETCHING_PHOTOS_START, FETCHING_PHOTOS_SUCCESS, FETCHING_PHOTOS_FAILURE, EDIT_PHOTO_START, EDIT_PHOTO_SUCCESS, EDIT_PHOTO_FAILURE, DELETE_PHOTO_START, DELETE_PHOTO_SUCCESS, DELETE_PHOTO_FAILURE } from "../actions/photos";
 
 const photos = {
+    id: 1, // automatically generated
+    user_id: 2, // generated based on the id of the logged in user
+    img_url: "https://picsum.photos/500",
+    description: "This is a photo description.", // optional
     error: "",
     isFetching: false,
     isEditing: false,
