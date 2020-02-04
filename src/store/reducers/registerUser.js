@@ -17,7 +17,9 @@ export const registerReducer = (state = stylist, action) => {
         case REGISTER_START:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                is_Stylist: true,
+                is_User: true
             };
         case REGISTER_SUCCESS:
             return {
@@ -27,7 +29,9 @@ export const registerReducer = (state = stylist, action) => {
                 password: action.password,
                 email: action.email,
                 location: action.location,
-                isLoading: false
+                isLoading: false,
+                is_Stylist: true,
+                is_User: true
             };
         case REGISTER_FAILURE:
             return {
@@ -37,7 +41,9 @@ export const registerReducer = (state = stylist, action) => {
                 username: "",
                 password: "",
                 email: "",
-                location: ""
+                location: "",
+                is_Stylist: false,
+                is_User: false
             };
         default: return state;
     };
