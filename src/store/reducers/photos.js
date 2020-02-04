@@ -7,8 +7,8 @@ const photos = {
     isDeleting: false,
     photo: []
 }
-export const photoReducer = (state = photos, actions) => {
-    switch (actions.type) {
+export const photoReducer = (state = photos, action) => {
+    switch (action.type) {
     case FETCHING_PHOTOS_START:
         return {
             ...state,
