@@ -29,9 +29,9 @@ function StylistsList (props) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.stylistReducer.stylists)
+    console.log(state.stylists.stylists)
     return({
-        stylist: state.stylistReducer.stylists
+        stylist: state.stylists.stylists
     })
 }
 

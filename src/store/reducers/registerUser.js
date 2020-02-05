@@ -6,7 +6,7 @@ const stylist = {
 }
 
 
-export const registerReducer = (state = stylist, action) => {
+export const registerUser = (state = stylist, action) => {
     switch(action.type) {
         case REGISTER_START:
             return {

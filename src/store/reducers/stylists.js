@@ -1,7 +1,7 @@
 import { FETCHING_STYLISTS_START, FETCHING_STYLISTS_SUCCESS, FETCHING_STYLISTS_FAILURE, SINGLE_STYLISTS_START, SINGLE_STYLISTS_SUCCESS, SINGLE_STYLISTS_FAILURE } from "../actions/stylists";
 
 const initialState = {
-    token: localStorage.getItem("token"),
+    // token: localStorage.getItem("token"),
     error: "",
     isFetching: false,
     stylists: [
@@ -47,14 +47,14 @@ const initialState = {
     ]
 };
 
-export const stylistReducer = (state = initialState, action) => {
+export const stylists = (state = initialState, action) => {
     switch(action.type) {
     case FETCHING_STYLISTS_START:
         return {
             ...state,
             isFetching: true,
             error: "",
-            token: localStorage.getItem("token")
+            // token: localStorage.getItem("token")
         };
     case FETCHING_STYLISTS_SUCCESS:
         return {
@@ -62,7 +62,7 @@ export const stylistReducer = (state = initialState, action) => {
             isFetching: false,
             error: "",
             stylists: action.payload,
-            token: localStorage.getItem("token")
+            // token: localStorage.getItem("token")
         };
     case FETCHING_STYLISTS_FAILURE:
         return {
