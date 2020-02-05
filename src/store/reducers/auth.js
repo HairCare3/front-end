@@ -4,8 +4,8 @@ const initialState = {
     id: 1,
     username: null,
     password: null,
-    email: null,
-    location: null,
+    // email: null,
+    // location: null,
     is_stylist: null,
   
   // profile_url: "http://imgurl.com/img.jpg", // optional profile iamge

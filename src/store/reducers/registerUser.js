@@ -2,12 +2,12 @@ import { REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE, SIGN_OUT } from "..
 
 const initialState = {
         id: 1,
-        name: "",
-        email: "",
-        password: "", // will not return in requests
-        location: "",
+        name: null,
+        email: null,
+        password: null, // will not return in requests
+        location: null,
         is_stylist: null, // defaults to false if not given
-        isLoading: false
+        isLoading: null
         // profile_url: "https://avatars0.githubusercontent.com/u/10442143", // optional
         // profile_info: "Hi this is my profile!" // optional
     };

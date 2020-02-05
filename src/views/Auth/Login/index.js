@@ -22,7 +22,7 @@ function Login(props) {
     username: "",
     password: ""
   })
-  console.log(props)
+  console.log("login", props)
   const dispatch = useDispatch();
   const history = useHistory();
 

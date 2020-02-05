@@ -9,12 +9,12 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const SIGN_OUT = "SIGN_OUT";
 
 
-export const registerUser = (newStylist) => dispatch => {
+export const registerUser = (newAccount) => dispatch => {
     dispatch({ type: REGISTER_START })
     axios
-    .post("https://haircare-api-3.herokuapp.com/api/auth/register", newStylist)
+    .post("https://haircare-api-3.herokuapp.com/api/auth/register", newAccount)
     .then(res => {
-        console.log(res);
+        console.log("register user", res);
         // localStorage.setItem("token", res.data.token)
         dispatch({ type: REGISTER_SUCCESS })
     })
