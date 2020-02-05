@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchStylists } from "../../../store/actions/stylists";
+import { Wrapper } from "bushido-strap";
 
 
 function StylistsList (props) {
@@ -11,8 +12,12 @@ function StylistsList (props) {
         pushstylists()
     }, [pushstylists])
 
+    const logout = () => {
+        localStorage.removeItem("token")
+    }
+
     return (
-        <div>
+        <Wrapper>
             <h1>Stylist List</h1>
             <div>
                 {props.stylist.map(stylist => (
@@ -23,8 +28,9 @@ function StylistsList (props) {
                         <p>Profile: {stylist.profile_info}</p>
                     </div>
                 ))}
+                <button onClick={logout}>Log Out</button>
             </div>
-        </div>
+        </Wrapper>
     )
 }
 

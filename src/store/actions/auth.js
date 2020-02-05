@@ -4,18 +4,17 @@ import axios from "axios";
 export const AUTHENTICATE = "AUTHENTICATE",
   SIGN_OUT = "SIGN_OUT", START_LOGIN = "START_LOGIN", LOGIN_FAILURE = "LOGIN_FAILURE"
 
-export const authenticate = (username, password) => dispatch => {
+export const authenticate = (credentials) => dispatch => {
   dispatch({ type: START_LOGIN });
   axios
-  .post("https://haircare-api-3.herokuapp.com/api/auth/login", { 
-    username, password
-  })
+  .post("https://haircare-api-3.herokuapp.com/api/auth/login", credentials)
   .then(res => {
-    console.log("authenticate respsonse", res)
-    localStorage.setItem("token");
+    console.log("authenticate respsonse", res.data.token)
+    localStorage.setItem("token", res.data.token);
   dispatch({ type: AUTHENTICATE });
   })
   .catch(err => {
+    console.log(err)
     dispatch({ type: LOGIN_FAILURE, payload: err})
   })
   

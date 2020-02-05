@@ -8,17 +8,16 @@ export const FETCHING_STYLISTS_START = "FETCHING_STYLISTS_START", FETCHING_STYLI
 export const SINGLE_STYLISTS_START = "SINGLE_STYLISTS_START", SINGLE_STYLISTS_SUCCESS = "SINGLE_STYLISTS_SUCCESS", SINGLE_STYLISTS_FAILURE = "SINGLE_STYLISTS_FAILURE";
 
 export const fetchStylists = () => dispatch => {
-    const headers = {
-        Authorization: localStorage.getItem("token")
-    }
+    // const headers = {
+    //     Authorization: localStorage.getItem("token")
+    // }
     console.log("TOKEN:", localStorage.getItem("token"))
     dispatch({ type: FETCHING_STYLISTS_START })
-    axios
-    .get("https://haircare-api-3.herokuapp.com/api/stylists", headers)
+    axiosWithAuth()
+    .get("/stylists")
     .then(res => {
         console.log("stylists response", res)
-        localStorage.setItem("token", res.data);
-        dispatch({ type: FETCHING_STYLISTS_SUCCESS })
+        dispatch({ type: FETCHING_STYLISTS_SUCCESS, payload: res.data })
     })
     .catch(err => {
         console.log("fetching stylist error", err) // most likely the payload will be err.response

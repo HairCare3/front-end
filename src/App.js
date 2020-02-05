@@ -39,7 +39,7 @@ const App = () => {
       <PrivateRoute path="/counter" component={ReduxCounter} />
       <PrivateRoute path="/stylists-profile" component={StylistsProfile} />
       <PrivateRoute path="/profile" component={CustomerProfile} />
-      <Route path="/stylists" component={StylistsList} />
+      <PrivateRoute path="/stylists" component={StylistsList} />
     </AppWrapper>
   );
 };

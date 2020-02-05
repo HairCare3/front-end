@@ -5,14 +5,14 @@ import { Wrapper, Form, Input, Button, Card, Box } from "bushido-strap";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
-import { authenticate } from "../../../store/actions/auth";
+import { registerUser } from "../../../store/actions/registerUser";
 
 export default function Register() {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = () => {
-    dispatch(authenticate());
+    dispatch(registerUser());
     history.push("/profile");
   };
 

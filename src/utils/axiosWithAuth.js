@@ -2,11 +2,11 @@ import axios from "axios";
 
 const axiosWithAuth = () => {
     const token = localStorage.getItem("token");
-
+    console.log(token)
     return axios.create({
-        baseUrl: "https://haircare-api-3.herokuapp.com/api",
+        baseURL: "https://haircare-api-3.herokuapp.com/api",
         headers: {
-            Authorization: token 
+            authorization: token 
         }
     });
 };
