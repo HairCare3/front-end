@@ -7,6 +7,8 @@ import { useHistory } from "react-router";
 
 import { registerUser } from "../../../store/actions/registerUser";
 
+import CheckBox from "./components/CheckBox";
+
 function Register(props) {
   const [newAccount, setNewAccount] = useState({
     name: "",
@@ -67,6 +69,7 @@ function Register(props) {
           value={newAccount.password}
           onChange={handleChange} />
           <Box h="2rem" />
+          <CheckBox />
           <Button green type="submit" stretch>
             Register
           </Button>
@@ -82,5 +85,6 @@ const mapStateToProps = state => {
     error: state.registerUser.error,
     loggingIn: state.registerUser.loggingIn
   })
-}
+};
+
 export default connect(mapStateToProps, { registerUser })(Register)
