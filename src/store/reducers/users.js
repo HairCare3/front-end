@@ -8,14 +8,14 @@ const initialState = {
     users: [
         {
             id: 1, // automatically generated
-            username: "bianca",
-            name: "Bianca Severino",
-            email: "biancasev@gmail.com",
+            username: "isabela",
+            name: "Isabela",
+            email: "isabela@cat.com",
             password: "password", // will not return in requests
             location: "New Haven, CT",
             is_stylist: false,
-            profile_url: "https://avatars0.githubusercontent.com/u/10442143",
-            profile_info: "Hi this is my profile!"
+            profile_url: null,
+            profile_info: "I am a cat"
         }
     ]
 };

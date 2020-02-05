@@ -4,7 +4,7 @@ import { fetchStylists } from "../../../store/actions/stylists";
 
 
 function StylistsList (props) {
-    console.log(props)
+    console.log(props.stylist)
 
     const pushstylists = props.fetchStylists
     useEffect(() => {
@@ -15,25 +15,23 @@ function StylistsList (props) {
         <div>
             <h1>Stylist List</h1>
             <div>
-                <p>Username: {props.stylist.username}</p>
+                {props.stylist.map(stylist => (
+                    <div key={stylist.id}>
+                        <p>Username: {stylist.username}</p>
+                        <p>Name: {stylist.name}</p>
+                        <p>Email: {stylist.email}</p>
+                        <p>Profile: {stylist.profile_info}</p>
+                    </div>
+                ))}
             </div>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    console.log(state.stylistReducer.stylists)
     return({
-        stylist: state.stylistReducer.stylists,
-        username: state.stylistReducer.stylists.username 
-// username: "bianca"
-// name: "Bianca Severino"
-// email: "biancasev@gmail.com"
-// password: "password"
-// location: "New Haven, CT"
-// is_stylist: false
-// profile_url: "https://avatars0.githubusercontent.com/u/10442143"
-// profile_info: "Hi this is my profile!"
+        stylist: state.stylistReducer.stylists
     })
 }
 
