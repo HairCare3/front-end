@@ -11,7 +11,7 @@ function CustomerProfile (props) {
     return (
         <div className="stylist-wrapper">
             <div className="stylist-content">
-                <h1>Stylists Profile</h1>
+                <h1>Customer Profile</h1>
                 <div>
                     <p>Username: {props.username}</p>
                 </div>
@@ -31,7 +31,7 @@ function CustomerProfile (props) {
 const mapStateToProps = (state) => {
     console.log(state)
     return({
-       username: state.registerReducer.username 
+       username: "Bill" 
     })
 }
 

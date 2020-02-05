@@ -31,7 +31,7 @@ const StylistsProfile = (props) => {
 const mapStateToProps = (state) => {
     console.log(state)
     return({
-        username: state.registerReducer.username,
+        username: "Jenny",
         
     })
 }

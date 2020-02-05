@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 
 import { authenticate } from "../../../store/actions/auth";
 
-export default function Login() {
+export default function Register() {
   const dispatch = useDispatch();
   const history = useHistory();
 

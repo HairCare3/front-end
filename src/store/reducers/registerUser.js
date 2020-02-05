@@ -12,7 +12,7 @@ const initialState = {
     };
 
 
-export const registerReducer = (state = initialState, action) => {
+export const registerUser = (state = initialState, action) => {
     switch(action.type) {
         case REGISTER_START:
             return {
