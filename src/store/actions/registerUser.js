@@ -17,7 +17,7 @@ export const registerUser = newUser => dispatch => {
     })
     .then(res => {
         console.log(res);
-        localStorage.setItem("token", res.data.token)
+        localStorage.setItem("token", res.data.payload )
         dispatch({ type: REGISTER_SUCCESS })
         return true
     })

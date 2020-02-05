@@ -13,7 +13,7 @@ export default function Login() {
 
   const handleSubmit = () => {
     dispatch(authenticate());
-    history.push("/stylists");
+    history.push("/profile");
   };
 
   return (

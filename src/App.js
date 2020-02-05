@@ -30,12 +30,9 @@ WebFont.load({
   }
 });
 
-const picture =
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.themefoxx.com%2Fwp-content%2Fuploads%2F2017%2F04%2F4k-3840-x-2160-wallpapers-themefoxx-639.jpg&f=1&nofb=1";
-
 const App = () => {
   return (
-    <AppWrapper bg_src={picture} head_font={h_font} font={r_font}>
+    <AppWrapper head_font={h_font} font={r_font}>
       <PrivateRoute path="/" exact component={Dashboard} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />

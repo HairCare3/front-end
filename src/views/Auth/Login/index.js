@@ -24,7 +24,7 @@ function Login(props) {
 
   const handleSubmit = () => {
     dispatch(authenticate());
-    history.push("/stylists");
+    history.push("/profile");
   };
 
   return (

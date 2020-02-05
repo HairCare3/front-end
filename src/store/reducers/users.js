@@ -5,19 +5,8 @@ const initialState = {
     isFetching: false,
     isEditing: false,
     isDeleting: false,
-    users: [
-        {
-            id: 1, // automatically generated
-            username: "isabela",
-            name: "Isabela",
-            email: "isabela@cat.com",
-            password: "password", // will not return in requests
-            location: "New Haven, CT",
-            is_stylist: false,
-            profile_url: null,
-            profile_info: "I am a cat"
-        }
-    ]
+    is_User: true,
+    userInfo: []
 };
 
 export const users = (state = initialState, action) => {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Wrapper, Linkton, Button, Row, Box, Col } from "bushido-strap";
+import { Wrapper, Linkton, Button, Row, Box } from "bushido-strap";
 
 import { useDispatch } from "react-redux";
 

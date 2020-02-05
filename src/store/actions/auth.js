@@ -4,9 +4,17 @@
 export const AUTHENTICATE = "AUTHENTICATE",
   SIGN_OUT = "SIGN_OUT";
 
-export const authenticate = () => dispatch => {
-  localStorage.setItem("token", true);
+export const authenticate = (username, password) => dispatch => {
+  dispatch({ type: START_LOGIN });
+  axios
+  .post("https://haircare-api-3.herokuapp.com/auth/login", { 
+    username, password
+  })
+  .then(res => {
+    console.log("authenticate respsonse", res)
+    localStorage.setItem("token", true);
   dispatch({ type: AUTHENTICATE });
+});
 };
 
 export const signOut = () => dispatch => {
