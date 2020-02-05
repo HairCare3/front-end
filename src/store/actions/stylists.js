@@ -10,7 +10,10 @@ export const SINGLE_STYLISTS_START = "SINGLE_STYLISTS_START", SINGLE_STYLISTS_SU
 export const fetchStylists = () => dispatch => {
     dispatch({ type: FETCHING_STYLISTS_START })
     axiosWithAuth()
-    .get("https://haircare-api-3.herokuapp.com/api/stylists")
+    .get("/stylists", {
+        headers: {
+            Authorization: token 
+    }})
     .then(res => {
         console.log(res)
         localStorage.setItem("token", res.data.token);
