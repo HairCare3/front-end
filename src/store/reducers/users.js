@@ -1,6 +1,6 @@
 import { FETCHING_USERS_START, FETCHING_USERS_SUCCESS, FETCHING_USERS_FAILURE, SINGLE_USER_START, SINGLE_USER_SUCCESS, SINGLE_USER_FAILURE, EDIT_USER_START, EDIT_USER_SUCCESS, EDIT_USER_FAILURE, DELETE_USER_START, DELETE_USER_SUCCESS, DELETE_USER_FAILURE } from "../actions/users";
 
-const users = {
+const initialState = {
     error: "",
     isFetching: false,
     isEditing: false,
@@ -9,7 +9,7 @@ const users = {
     userInfo: []
 };
 
-export const userReducer = (state = users, action) => {
+export const users = (state = initialState, action) => {
     switch (action.type) {
     case FETCHING_USERS_START:
         return {

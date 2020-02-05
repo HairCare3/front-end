@@ -7,12 +7,12 @@ export const AUTHENTICATE = "AUTHENTICATE",
 export const authenticate = (username, password) => dispatch => {
   dispatch({ type: START_LOGIN });
   axios
-  .post("https://haircare-api-3.herokuapp.com/auth/login", { 
+  .post("https://haircare-api-3.herokuapp.com/api/auth/login", { 
     username, password
   })
   .then(res => {
     console.log("authenticate respsonse", res)
-    localStorage.setItem("token", true);
+    localStorage.setItem("token");
   dispatch({ type: AUTHENTICATE });
   })
   .catch(err => {

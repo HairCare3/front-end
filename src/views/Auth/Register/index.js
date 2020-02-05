@@ -9,7 +9,8 @@ import { authenticate } from "../../../store/actions/auth";
 
 import CheckBox from "./components/CheckBox";
 
-export default function Login() {
+export default function Register() {
+
   const dispatch = useDispatch();
   const history = useHistory();
 

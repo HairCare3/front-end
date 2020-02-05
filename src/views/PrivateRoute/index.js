@@ -7,7 +7,8 @@ import { useSelector } from "react-redux";
 import LandingPage from "../LandingPage";
 
 export default function PrivateRoute({ component: RouteComponent, ...rest }) {
-  const { token } = useSelector(state => state.auth);
+  // const { token } = useSelector(state => state.auth);
+  const token = false
 
   return (
     <Route

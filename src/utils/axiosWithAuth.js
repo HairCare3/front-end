@@ -6,7 +6,7 @@ const axiosWithAuth = () => {
     return axios.create({
         baseUrl: "https://haircare-api-3.herokuapp.com/api",
         headers: {
-            authorization: token 
+            Authorization: token 
         }
     });
 };

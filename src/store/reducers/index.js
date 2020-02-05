@@ -1,15 +1,17 @@
 import { combineReducers } from "redux";
 import { auth } from "./auth";
 import { counter } from "./counter";
-import { registerReducer } from "./registerUser";
-import { userReducer } from "./users";
-import { photoReducer } from "./photos";
+import { registerUser } from "./registerUser";
+import { users } from "./users";
+import { photos } from "./photos";
+import { stylists } from "./stylists"
 
 // Using combine reducers to break up reducers into different files
 export default combineReducers({
   auth,
   counter,
-  registerReducer,
-  userReducer,
-  photoReducer
+  photos,
+  registerUser,
+  stylists,
+  users
 });

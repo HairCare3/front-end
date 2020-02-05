@@ -12,18 +12,19 @@ import {
   Col
 } from "bushido-strap";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 import { useHistory } from "react-router";
 
 import { authenticate } from "../../../store/actions/auth";
 
-export default function Login() {
+function Login(props) {
+  console.log(props)
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = () => {
     dispatch(authenticate());
-    history.push("/profile");
+    history.push("/stylists");
   };
 
   return (
@@ -48,3 +49,11 @@ export default function Login() {
     </Wrapper>
   );
 }
+const mapStateToProps = state => {
+  console.log(state.auth);
+  return ({
+    error: state.auth.error,
+    loggingIn: state.auth.loggingIn
+  })
+}
+export default connect(mapStateToProps, { authenticate })(Login)
