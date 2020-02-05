@@ -7,6 +7,8 @@ import { useHistory } from "react-router";
 
 import { authenticate } from "../../../store/actions/auth";
 
+import CheckBox from "./components/CheckBox";
+
 export default function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -26,6 +28,7 @@ export default function Login() {
           <Box h="2rem" />
           <Input type="password" placeholder="Password" />
           <Box h="2rem" />
+          <CheckBox />
           <Button green type="submit" stretch>
             Register
           </Button>
