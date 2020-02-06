@@ -1,7 +1,7 @@
 import React from "react";
 
 // Set up all routes in App
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 // Using AppWrapper to set font and background for the app
 import { AppWrapper, theme } from "bushido-strap";
@@ -34,18 +34,24 @@ WebFont.load({
 });
 
 const App = () => {
+  
   return (
     <AppWrapper head_font={h_font} font={r_font}>
+      <div>
+      <Link to="/">Home</Link>
+        <Link to="/stylists">Stylists</Link>
+        <Link to="/users">Users</Link>
+      </div>
       <PrivateRoute path="/" exact component={Dashboard} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <PrivateRoute path="/counter" component={ReduxCounter} />
       <PrivateRoute path="/stylists-profile" component={StylistsProfile} />
       <PrivateRoute path="/profile" component={CustomerProfile} />
-      <PrivateRoute path="/stylists" component={StylistsList} />
-      <PrivateRoute path="/users" component={UsersList} />
+      <PrivateRoute exact path="/stylists" component={StylistsList} />
+      <PrivateRoute exact path="/users" component={UsersList} />
       <PrivateRoute path="/stylists/:id" component={Stylist} />
-      <PrivateRoute path="/stylists/:id/reviews" component={AddStylistReviews} />
+      <PrivateRoute exact path="/stylists/:id/reviews" component={AddStylistReviews} />
     </AppWrapper>
   );
 };
