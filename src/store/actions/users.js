@@ -29,8 +29,8 @@ export const fetchUsers = () => dispatch => {
 
 export const fetchUserId = (id) => dispatch => {
     dispatch({ type: SINGLE_USER_START })
-    axios
-    .get(`https://haircare-api-3.herokuapp.com/api/users/${id}`)
+    axiosWithAuth()
+    .get(`/users/${id}`)
     .then(res => {
         console.log(res)
         dispatch({ type: SINGLE_USER_SUCCESS, payload: res.data })

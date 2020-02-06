@@ -55,7 +55,8 @@ export const users = (state = initialState, action) => {
         return {
             ...state,
             isFetching: false,
-            userInfo: state.userInfo.map(user => user.id !== action.payload)
+            error: "",
+            userInfo: action.payload
         };
     case SINGLE_USER_FAILURE:
         return {

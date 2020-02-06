@@ -1,4 +1,5 @@
 import { AUTHENTICATE, START_LOGIN, LOGIN_FAILURE, SIGN_OUT } from "../actions/auth";
+import { bindActionCreators } from "redux";
 
 const initialState = {
     id: 1,
@@ -22,7 +23,8 @@ export const auth = (state = initialState, action) => {
     case AUTHENTICATE:
       return {
         ...state,
-        is_stylist: true,
+        is_stylist: action.payload.is_stylist,
+        username: action.payload.username,
       };
     case LOGIN_FAILURE:
       return {

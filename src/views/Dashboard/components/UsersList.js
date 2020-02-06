@@ -5,13 +5,11 @@ import { fetchUsers } from "../../../store/actions/users";
 import { Wrapper } from "bushido-strap";
 import { Link } from "react-router-dom";
 
-function UsersList (props) {
-    console.log(props)
+function UsersList ({ fetchUsers, user }) {
 
-    const pushusers = props.fetchUsers
     useEffect(() => {
-        pushusers()
-    }, [pushusers])
+        fetchUsers()
+    }, [fetchUsers])
 
     const logout = () => {
         localStorage.removeItem("token")
@@ -21,14 +19,20 @@ function UsersList (props) {
         <Wrapper>
             <div>
             <h1>User List</h1>
-                {props.user.map(user => (
+                <div>
+                {user.map(user => (
                     <div key={user.id}>
                         <p>Username: {user.username}</p>
                         <p>Name: {user.name}</p>
                         <p>Email: {user.email}</p>
-                        <p>Profile: {user.profile_info}</p>
+                        {/* <p>Profile: {user.profile_info}</p> */}
+                        <br></br>
+                        <Link to={`/users/${user.id}`}>
+                            <div>View Profile</div>
+                    </Link>
                     </div>
                 ))}
+                </div>
                 
                 <button onClick={logout}>Log Out</button>
             </div>
@@ -37,7 +41,7 @@ function UsersList (props) {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    console.log("user list", state)
     return({
         user: state.users.userInfo
     })

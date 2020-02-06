@@ -33,7 +33,7 @@ function Login(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(authenticate(credentials));
-    history.push("/users");
+    history.push("/");
   };
 
   return (

@@ -48,7 +48,7 @@ function StylistsList ({ fetchStylists, fetchStylistsId, addStylistReviews, styl
                         <p>Username: {stylist.username}</p>
                         <p>Name: {stylist.name}</p>
                         <p>Email: {stylist.email}</p>
-                        <p>Profile: {stylist.profile_info}</p>
+                        {/* <p>Profile: {stylist.profile_info}</p> */}
                         <br></br>
                         <Link to={`/stylists/${stylist.id}`}>
                             <div>View Profile</div>
