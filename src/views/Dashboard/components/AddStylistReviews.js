@@ -8,29 +8,33 @@ import { addStylistReviews } from "../../../store/actions/stylists";
 // haircut_rating: 5, // integer 1-5
 // img_url: "http://images.com/img.png", // optional photo
 // img_description: "This is a photo description, I am not required."
-const StylistForm = (props) => {
-    console.log(props)
+const AddStylistReviews = ({ addStylistReviews, reviews }) => {
+    // console.log(props)
 
-    const [id, setId] = useState({
-        id: "",
-        review: "",
-        text: "",
-        stylist_rating: "",
-        haircut_rating: ""
-    })
-    // const { id } = props.match.params;
+    // const [id, setId] = useState({
+    //     id: "",
+    //     review: "",
+    //     text: "",
+    //     stylist_rating: "",
+    //     haircut_rating: ""
+    // })
+    // const { id } = useParams();
 
     const dispatch = useDispatch();
 
-  const pushreviews = props.addStylistReviews
-    useEffect((id) => {
-        pushreviews(id)
-    }, [pushreviews]);
+    // useEffect(() => {
+    //     const review_id = id ? id : 1
+    //     addStylistReviews(review_id);
+    // }, [id])
+//   const pushreviews = props.addStylistReviews
+//     useEffect((id) => {
+//         pushreviews(id)
+//     }, [pushreviews]);
 
-    const handleChange = e => {
-        e.preventDefault();
-        setId({...id, [e.target.name] : e.target.value})
-      }
+    // const handleChange = e => {
+    //     e.preventDefault();
+    //     setId({...id, [e.target.name] : e.target.value})
+    //   }
 
     const handleSubmit = (e, id) => {
         e.preventDefault();
@@ -38,22 +42,15 @@ const StylistForm = (props) => {
         // history.push("/users");
       };
 
-    //   const postReview = (id) => {
-    //     axiosWithAuth()
-    //     .post(`https://haircare-api-3.herokuapp.com/api/stylists/${id}/reviews`, id)
-    //     .then(res => {
-    //         console.log("stylist by id response", res)
-    //         setId({
-    //             id: res.data.message
-    //         })
-    //     })
-    //     .catch(err => {
-    //         console.log("get stylist by id", err)
-    //     })
-    // };
-
     return (
+        
         <div>
+            <div>
+            {/* {props.reviews.map(review => 
+                review.review_id === props.review_id ? (
+                    <p key={review.review_id}>{review.title}</p>
+                ) : null)} */}
+        </div>
             <form>
                 <input
                 type="text"
@@ -82,10 +79,10 @@ const StylistForm = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state.stylists); 
+    console.log(state.stylists.reviews); 
     return({
         reviews: state.stylists.reviews
     })
 }
 
-export default connect(mapStateToProps, { addStylistReviews })(StylistForm);
+export default connect(mapStateToProps, { addStylistReviews })(AddStylistReviews);

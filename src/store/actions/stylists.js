@@ -43,13 +43,19 @@ export const fetchStylistsId = (id) => dispatch => {
     })
 };
 
-export const addStylistReviews = (id) => dispatch => {
+// export const get
+
+export const addStylistReviews = (review_id, review) => dispatch => {
     dispatch({ type: ADD_REVIEW_START })
-    axiosWithAuth()
-    .post(`/stylists/${id}/reviews`)
+    axios
+    .post(`/stylists/${review_id}/reviews`, review,
+    {
+        "Content-Type": "application/json",
+        headers: { authorization: localStorage.getItem("token") }
+    })
     .then(res => {
         console.log("stylist review respsonse", res)
-        dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data.id })
+        dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data })
     })
     .catch(err => {
         console.log("stylist review error", err)

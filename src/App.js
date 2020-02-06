@@ -16,11 +16,11 @@ import StylistsProfile from "./views/Dashboard/components/StylistsProfile";
 import CustomerProfile from "./views/Dashboard/components/CustomerProfile";
 import StylistsList from "./views/Dashboard/components/StylistsList";
 import UsersList from "./views/Dashboard/components/UsersList";
+import AddStylistReviews from "./views/Dashboard/components/AddStylistReviews";
+import Stylist from "./views/Dashboard/components/SingleStylist";
 
 // Using Web Font Loader for google fonts
 import WebFont from "webfontloader";
-import StylistForm from "./views/Dashboard/components/StylistForm";
-
 
 // setting our font variables
 const h_font = "Comfortaa";
@@ -44,7 +44,8 @@ const App = () => {
       <PrivateRoute path="/profile" component={CustomerProfile} />
       <PrivateRoute path="/stylists" component={StylistsList} />
       <PrivateRoute path="/users" component={UsersList} />
-      <PrivateRoute path="/stylists/:id/reviews" component={StylistForm} />
+      <PrivateRoute path="/stylists/:id" component={Stylist} />
+      <PrivateRoute path="/stylists/:id/reviews" component={AddStylistReviews} />
     </AppWrapper>
   );
 };

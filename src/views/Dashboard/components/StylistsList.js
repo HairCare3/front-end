@@ -1,5 +1,5 @@
 import React, { useEffect, useParams, location } from "react";
-import StylistForm from "../components/StylistForm";
+import AddStylistReviews from "../components/AddStylistReviews";
 import { connect } from "react-redux";
 import { fetchStylists } from "../../../store/actions/stylists";
 import { addStylistReviews } from "../../../store/actions/stylists"
@@ -31,7 +31,7 @@ function StylistsList (props) {
                         <p>Name: {stylist.name}</p>
                         <p>Email: {stylist.email}</p>
                         <p>Profile: {stylist.profile_info}</p>
-                        <StylistForm />
+                        <AddStylistReviews />
                     </div>
                 ))}
                 </div>

@@ -34,19 +34,19 @@ const initialState = {
         //     img_url: "https://picsum.photos/500"
         // }
     ],
-            reviews: [
-                // array of reviews posted by customers
-                // {
-                    // review_id: "",
-                    // customer_id: "",
-                    // stylist_id: "",
-                    // photo_id: "",
-                    // title: "",
-                    // text: "",
-                    // stylist_rating: "",
-                    // haircut_rating: ""
-                // }
-            ]
+        reviews: [
+            // array of reviews posted by customers
+            {
+                review_id: "",
+                customer_id: "",
+                stylist_id: "",
+                photo_id: "",
+                title: "",
+                text: "",
+                stylist_rating: "",
+                haircut_rating: ""
+            }
+        ]
 };
 
 export const stylists = (state = initialState, action) => {
@@ -82,7 +82,8 @@ export const stylists = (state = initialState, action) => {
         return {
             ...state,
             isFetching: false,
-            stylists: state.stylists.map(stylist => stylist.id !== action.payload)
+            error: "",
+            stylists: action.payload
         };
     case SINGLE_STYLISTS_FAILURE:
         return {

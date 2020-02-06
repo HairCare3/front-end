@@ -23,7 +23,7 @@ export const registerUser = (state = initialState, action) => {
         case REGISTER_SUCCESS:
             return {
                 ...state,
-                isLoading: true
+                is_stylist: false
             };
         case REGISTER_FAILURE:
             return {
@@ -35,6 +35,7 @@ export const registerUser = (state = initialState, action) => {
                 ...state,
                 token: localStorage.removeItem("token")
             };
-        default: return state;
+        default: 
+        return state;
     };
 };
