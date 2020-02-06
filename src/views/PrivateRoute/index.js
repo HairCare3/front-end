@@ -8,8 +8,8 @@ import LandingPage from "../LandingPage";
 
 export default function PrivateRoute({ component: RouteComponent, ...rest }) {
   // const { token } = useSelector(state => state.auth);
-  const token = false
-
+  const token = localStorage.getItem("token")
+  console.log("private token", token)
   return (
     <Route
       {...rest}

@@ -7,18 +7,21 @@ export const FETCHING_STYLISTS_START = "FETCHING_STYLISTS_START", FETCHING_STYLI
 // FETCHING SINGLE STYLISTS
 export const SINGLE_STYLISTS_START = "SINGLE_STYLISTS_START", SINGLE_STYLISTS_SUCCESS = "SINGLE_STYLISTS_SUCCESS", SINGLE_STYLISTS_FAILURE = "SINGLE_STYLISTS_FAILURE";
 
+// POSTING STYLISTS REVIES
+export const ADD_REVIEW_START = "ADD_REVIEW_START", ADD_REVIEW_SUCCESS = "ADD_REVIEW_SUCCESS", ADD_REVIEW_FAILURE = "ADD_REVIEW_FAILURE";
+
+
 export const fetchStylists = () => dispatch => {
-    const headers = {
-        Authorization: localStorage.getItem("token")
-    }
+    // const headers = {
+    //     Authorization: localStorage.getItem("token")
+    // }
     console.log("TOKEN:", localStorage.getItem("token"))
     dispatch({ type: FETCHING_STYLISTS_START })
-    axios
-    .get("https://haircare-api-3.herokuapp.com/api/stylists", headers)
+    axiosWithAuth()
+    .get("/stylists")
     .then(res => {
         console.log("stylists response", res)
-        localStorage.setItem("token", res.data);
-        dispatch({ type: FETCHING_STYLISTS_SUCCESS })
+        dispatch({ type: FETCHING_STYLISTS_SUCCESS, payload: res.data })
     })
     .catch(err => {
         console.log("fetching stylist error", err) // most likely the payload will be err.response
@@ -29,13 +32,33 @@ export const fetchStylists = () => dispatch => {
 export const fetchStylistsId = (id) => dispatch => {
     dispatch({ type: SINGLE_STYLISTS_START })
     axiosWithAuth()
-    .get(`/stylists/${id}`)
+    .get(`/stylists/${id}`, id)
     .then(res => {
-        console.log(res)
+        console.log("stylist by id response", res)
         dispatch({ type: SINGLE_STYLISTS_SUCCESS, payload: res.data })
     })
     .catch(err => {
         console.log("get stylist by id", err)
-        dispatch({ type: SINGLE_STYLISTS_FAILURE })
+        dispatch({ type: SINGLE_STYLISTS_FAILURE, payload: err })
+    })
+};
+
+// export const get
+
+export const addStylistReviews = (review_id, review) => dispatch => {
+    dispatch({ type: ADD_REVIEW_START })
+    axios
+    .post(`/stylists/${review_id}/reviews`, review,
+    {
+        "Content-Type": "application/json",
+        headers: { authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+        console.log("stylist review respsonse", res)
+        dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+        console.log("stylist review error", err)
+        dispatch({ type: ADD_REVIEW_FAILURE, payload: err })
     })
 };

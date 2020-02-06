@@ -5,8 +5,20 @@ const initialState = {
     isFetching: false,
     isEditing: false,
     isDeleting: false,
-    is_User: true,
-    userInfo: []
+    is_stylist: false,
+    userInfo: [
+        // {
+        //     id: 1, // automatically generated
+        //     username: "",
+        //     name: "",
+        //     email: "",
+        //     password: "", // will not return in requests
+        //     location: "",
+            
+        //     profile_url: null,
+        //     profile_info: ""
+        // }
+    ]
 };
 
 export const users = (state = initialState, action) => {

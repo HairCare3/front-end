@@ -11,4 +11,4 @@ function IsStylist() {
     );
 };
 
-export default IsStylist
+export default IsStylist;

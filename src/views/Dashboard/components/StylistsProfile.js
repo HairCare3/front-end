@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { registerUser } from "../../../store/actions/registerUser";
 import { connect } from "react-redux";
 import { Wrapper, Linkton, Box, Card } from "bushido-strap";
+import axiosWithAuth from "../../../utils/axiosWithAuth";
 
 const StylistsProfile = (props) => {
     console.log(props)
+    const [stylist, setStylist] = useState({})
 
     // const pushStylists = props.registerUser
     // useEffect(() => {
     //     pushStylists()
     // }, [pushStylists])
-
+   
     return (
         <div className="stylist-wrapper">
             <div className="stylist-content">

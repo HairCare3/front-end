@@ -5,24 +5,26 @@ import axiosWithAuth from "../../utils/axiosWithAuth";
 // add user
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
-export const REGISTER_FAILURE = "REGISTER_FAILURE"
+export const REGISTER_FAILURE = "REGISTER_FAILURE";
+export const SIGN_OUT = "SIGN_OUT";
 
 
-export const registerUser = newUser => dispatch => {
+export const registerUser = (newAccount) => dispatch => {
     dispatch({ type: REGISTER_START })
-    axiosWithAuth()
-    .post("/auth/register", {
-        username: newUser.username,
-        password: newUser.password
-    })
+    axios
+    .post("https://haircare-api-3.herokuapp.com/api/auth/register", newAccount)
     .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.payload )
+        console.log("register user", res);
+        // localStorage.setItem("token", res.data.token)
         dispatch({ type: REGISTER_SUCCESS })
-        return true
     })
     .catch(err =>{
         console.log(err);
         dispatch({ type: REGISTER_FAILURE, payload: err })
     })
-}
+};
+
+export const signOut = () => dispatch => {
+    localStorage.removeItem("token");
+    dispatch({ type: SIGN_OUT });
+  };

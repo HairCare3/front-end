@@ -12,12 +12,15 @@ import Register from "./views/Auth/Register";
 import Login from "./views/Auth/Login";
 import Dashboard from "./views/Dashboard";
 import ReduxCounter from "./views/ReduxCounter";
-
-// Using Web Font Loader for google fonts
-import WebFont from "webfontloader";
 import StylistsProfile from "./views/Dashboard/components/StylistsProfile";
 import CustomerProfile from "./views/Dashboard/components/CustomerProfile";
 import StylistsList from "./views/Dashboard/components/StylistsList";
+import UsersList from "./views/Dashboard/components/UsersList";
+import AddStylistReviews from "./views/Dashboard/components/AddStylistReviews";
+import Stylist from "./views/Dashboard/components/SingleStylist";
+
+// Using Web Font Loader for google fonts
+import WebFont from "webfontloader";
 
 // setting our font variables
 const h_font = "Comfortaa";
@@ -39,7 +42,10 @@ const App = () => {
       <PrivateRoute path="/counter" component={ReduxCounter} />
       <PrivateRoute path="/stylists-profile" component={StylistsProfile} />
       <PrivateRoute path="/profile" component={CustomerProfile} />
-      <Route path="/stylists" component={StylistsList} />
+      <PrivateRoute path="/stylists" component={StylistsList} />
+      <PrivateRoute path="/users" component={UsersList} />
+      <PrivateRoute path="/stylists/:id" component={Stylist} />
+      <PrivateRoute path="/stylists/:id/reviews" component={AddStylistReviews} />
     </AppWrapper>
   );
 };

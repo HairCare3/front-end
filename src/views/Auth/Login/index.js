@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Wrapper,
@@ -18,13 +18,22 @@ import { useHistory } from "react-router";
 import { authenticate } from "../../../store/actions/auth";
 
 function Login(props) {
-  console.log(props)
+  const [credentials, setCredientials] = useState({
+    username: "",
+    password: ""
+  })
+  console.log("login", props)
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = () => {
-    dispatch(authenticate());
-    history.push("/stylists");
+  const handleChange = e => {
+    e.preventDefault();
+    setCredientials({...credentials, [e.target.name] : e.target.value})
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(authenticate(credentials));
+    history.push("/users");
   };
 
   return (
@@ -37,9 +46,17 @@ function Login(props) {
           </Row>
           <h2>Login here!</h2>
           <Box h="2rem" />
-          <Input type="text" placeholder="Email" />
+          <Input type="text"
+          name="username" 
+          placeholder="Username" 
+          value={credentials.username} 
+          onChange={handleChange} />
           <Box h="2rem" />
-          <Input type="password" placeholder="Password" />
+          <Input type="password" 
+          placeholder="Password"
+          name="password" 
+          value={credentials.password}
+          onChange={handleChange} />
           <Box h="2rem" />
           <Button green type="submit" stretch>
             Login

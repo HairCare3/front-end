@@ -13,10 +13,10 @@ export const EDIT_USER_START = "EDIT_USER_START", EDIT_USER_SUCCESS = "EDIT_USER
 // DELETE USER
 export const DELETE_USER_START = "DELETE_USER_START", DELETE_USER_SUCCESS = "DELETE_USER_SUCCESS", DELETE_USER_FAILURE = "DELETE_USER_FAILURE"
 
-export const fetchUser = () => dispatch => {
+export const fetchUsers = () => dispatch => {
     dispatch({ type: FETCHING_USERS_START })
-    axios
-    .get("https://haircare-api-3.herokuapp.com/api/users")
+    axiosWithAuth()
+    .get("/users")
     .then(res => {
         console.log(res) // most likely the payload will be res.data
         dispatch({ type: FETCHING_USERS_SUCCESS, payload: res.data })
