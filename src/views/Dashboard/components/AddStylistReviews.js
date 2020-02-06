@@ -1,7 +1,9 @@
-import React, { useParams, useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import axiosWithAuth from "../../../utils/axiosWithAuth";
 import { connect, useDispatch } from "react-redux";
-import { addStylistReviews } from "../../../store/actions/stylists";
+import { addStylistReviews, deleteReview } from "../../../store/actions/stylists";
+import { useParams, useHistory } from "react-router-dom";
+
 // title: "Review Title", // optional title
 // text: "This is the body text of the review. I have no character limit.",
 // stylist_rating: 4, // integer 1-5
@@ -11,68 +13,78 @@ import { addStylistReviews } from "../../../store/actions/stylists";
 const AddStylistReviews = ({ addStylistReviews, reviews }) => {
     // console.log(props)
 
-    // const [id, setId] = useState({
-    //     id: "",
-    //     review: "",
-    //     text: "",
-    //     stylist_rating: "",
-    //     haircut_rating: ""
-    // })
-    // const { id } = useParams();
+    const [review, setReview] = useState({
+        id: "",
+        review: "",
+        text: "",
+        stylist_rating: "",
+        haircut_rating: ""
+    })
+    const { id } = useParams();
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    // useEffect(() => {
-    //     const review_id = id ? id : 1
-    //     addStylistReviews(review_id);
-    // }, [id])
-//   const pushreviews = props.addStylistReviews
-//     useEffect((id) => {
-//         pushreviews(id)
-//     }, [pushreviews]);
+    useEffect(() => {
+        // const review_id = id ? id : 1
+        addStylistReviews(id);
+    }, [id])
+   
+    const handleDelete = (e, id) => {
+        e.preventDefault();
+        dispatch(deleteReview(id));
+        history.push("/stylists");
+    }
 
-    // const handleChange = e => {
-    //     e.preventDefault();
-    //     setId({...id, [e.target.name] : e.target.value})
-    //   }
+    const handleChange = e => {
+        e.preventDefault();
+        setReview({...review, [e.target.name] : e.target.value})
+      }
+    
 
     const handleSubmit = (e, id) => {
         e.preventDefault();
         dispatch(addStylistReviews(id));
-        // history.push("/users");
+        history.push("/stylists");
       };
 
     return (
         
         <div>
             <div>
-            {/* {props.reviews.map(review => 
-                review.review_id === props.review_id ? (
-                    <p key={review.review_id}>{review.title}</p>
-                ) : null)} */}
         </div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input
                 type="text"
                 name="review"
-                placeholder="Review Title" />
+                placeholder="Review Title"
+                value={review.review}
+                onChange={handleChange} />
                 <input 
                 type="text"
                 name="text"
-                placeholder="Enter text here" />
+                placeholder="Enter text here"
+                value={review.text}
+                onChange={handleChange} />
                 <input
                 type="number"
                 name="stylist_rating" 
                 min="1"
                 max="5"
-                placeholder="Stylist Rating 1-5" />
+                placeholder="Stylist Rating 1-5"
+                value={review.stylist_rating}
+                onChange={handleChange} />
                 <input
                 type="number"
                 name="haircut_rating"
                 min="1"
                 max="5"
-                placeholder="Haircut Rating 1-5" />
-                <button>Add Review</button>
+                placeholder="Haircut Rating 1-5"
+                value={review.haircut_rating}
+                onChange={handleChange} />
+                <button>Add</button>
+                <button>Edit</button>
+                <button onClick={handleDelete}>Delete</button>
             </form>
         </div>
     )

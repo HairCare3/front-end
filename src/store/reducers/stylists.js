@@ -1,6 +1,7 @@
 import { FETCHING_STYLISTS_START, FETCHING_STYLISTS_SUCCESS, FETCHING_STYLISTS_FAILURE } from "../actions/stylists";
 import { SINGLE_STYLISTS_START, SINGLE_STYLISTS_SUCCESS, SINGLE_STYLISTS_FAILURE } from "../actions/stylists";
 import { ADD_REVIEW_START, ADD_REVIEW_SUCCESS, ADD_REVIEW_FAILURE} from "../actions/stylists";
+import { DELETE_REVIEW_START, DELETE_REVIEW_SUCCESS, DELETE_REVIEW_FAILURE } from "../actions/stylists";
 
 const initialState = {
     // token: localStorage.getItem("token"),
@@ -36,6 +37,7 @@ const initialState = {
     ],
         reviews: [
             // array of reviews posted by customers
+            // review_id: Date.now() + Math.random().toString().slice(2),
             {
                 review_id: "",
                 customer_id: "",
@@ -110,6 +112,23 @@ export const stylists = (state = initialState, action) => {
                 isFetching: false,
                 error: action.payload
             };
+        case DELETE_REVIEW_START:
+            return {
+                ...state,
+                isFetching: true
+            };
+        case DELETE_REVIEW_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                reviews: action.payload
+            };
+        case DELETE_REVIEW_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload,
+            }
     default:
         return state;
     }
