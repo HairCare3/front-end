@@ -15,7 +15,7 @@ export const registerUser = (newAccount) => dispatch => {
     .post("https://haircare-api-3.herokuapp.com/api/auth/register", newAccount)
     .then(res => {
         console.log("register user", res);
-        // localStorage.setItem("token", res.data.token)
+        localStorage.setItem("token", res.data.token)
         dispatch({ type: REGISTER_SUCCESS })
     })
     .catch(err =>{
