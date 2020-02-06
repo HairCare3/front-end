@@ -7,6 +7,10 @@ export const FETCHING_STYLISTS_START = "FETCHING_STYLISTS_START", FETCHING_STYLI
 // FETCHING SINGLE STYLISTS
 export const SINGLE_STYLISTS_START = "SINGLE_STYLISTS_START", SINGLE_STYLISTS_SUCCESS = "SINGLE_STYLISTS_SUCCESS", SINGLE_STYLISTS_FAILURE = "SINGLE_STYLISTS_FAILURE";
 
+// POSTING STYLISTS REVIES
+export const ADD_REVIEW_START = "ADD_REVIEW_START", ADD_REVIEW_SUCCESS = "ADD_REVIEW_SUCCESS", ADD_REVIEW_FAILURE = "ADD_REVIEW_FAILURE";
+
+
 export const fetchStylists = () => dispatch => {
     // const headers = {
     //     Authorization: localStorage.getItem("token")
@@ -30,11 +34,25 @@ export const fetchStylistsId = (id) => dispatch => {
     axiosWithAuth()
     .get(`/stylists/${id}`)
     .then(res => {
-        console.log(res)
+        console.log("stylist by id response", res)
         dispatch({ type: SINGLE_STYLISTS_SUCCESS, payload: res.data })
     })
     .catch(err => {
         console.log("get stylist by id", err)
-        dispatch({ type: SINGLE_STYLISTS_FAILURE })
+        dispatch({ type: SINGLE_STYLISTS_FAILURE, payload: err })
+    })
+};
+
+export const addStylistReviews = (id) => dispatch => {
+    dispatch({ type: ADD_REVIEW_START })
+    axiosWithAuth()
+    .post(`/stylists/${id}/reviews`)
+    .then(res => {
+        console.log("stylist review respsonse", res)
+        dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+        console.log("stylist review error", err)
+        dispatch({ type: ADD_REVIEW_FAILURE, payload: err })
     })
 };
