@@ -32,7 +32,7 @@ export const fetchStylists = () => dispatch => {
 export const fetchStylistsId = (id) => dispatch => {
     dispatch({ type: SINGLE_STYLISTS_START })
     axiosWithAuth()
-    .get(`/stylists/${id}`)
+    .get(`/stylists/${id}`, id)
     .then(res => {
         console.log("stylist by id response", res)
         dispatch({ type: SINGLE_STYLISTS_SUCCESS, payload: res.data })
@@ -49,7 +49,7 @@ export const addStylistReviews = (id) => dispatch => {
     .post(`/stylists/${id}/reviews`)
     .then(res => {
         console.log("stylist review respsonse", res)
-        dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data })
+        dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data.id })
     })
     .catch(err => {
         console.log("stylist review error", err)

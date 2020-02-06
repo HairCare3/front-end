@@ -7,7 +7,7 @@ const initialState = {
     error: "",
     isFetching: false,
     stylists: [
-        {
+        // {
             // id: 1, // automatically generated
             // username: "",
             // name: "",
@@ -17,24 +17,26 @@ const initialState = {
             // is_stylist: true,
             // profile_url: "",
             // profile_info: "",
-            photos: [
-                // array of photos posted by stylist (excludes review photos)
-                // {
-                //     photo_id: "",
-                //     user_id: "",
-                //     description: "",
-                //     img_url: ""
-                // },
-                // {
-                //     photo_id: "",
-                //     user_id: "",
-                //     description: "This is another photo",
-                //     img_url: "https://picsum.photos/500"
-                // }
-            ],
+        // }
+    ],
+    photos: [
+        // array of photos posted by stylist (excludes review photos)
+        // {
+        //     photo_id: "",
+        //     user_id: "",
+        //     description: "",
+        //     img_url: ""
+        // },
+        // {
+        //     photo_id: "",
+        //     user_id: "",
+        //     description: "This is another photo",
+        //     img_url: "https://picsum.photos/500"
+        // }
+    ],
             reviews: [
                 // array of reviews posted by customers
-                {
+                // {
                     // review_id: "",
                     // customer_id: "",
                     // stylist_id: "",
@@ -43,10 +45,8 @@ const initialState = {
                     // text: "",
                     // stylist_rating: "",
                     // haircut_rating: ""
-                }
+                // }
             ]
-        }
-    ]
 };
 
 export const stylists = (state = initialState, action) => {

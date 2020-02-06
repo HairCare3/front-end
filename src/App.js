@@ -19,6 +19,7 @@ import UsersList from "./views/Dashboard/components/UsersList";
 
 // Using Web Font Loader for google fonts
 import WebFont from "webfontloader";
+import StylistForm from "./views/Dashboard/components/StylistForm";
 
 
 // setting our font variables
@@ -43,6 +44,7 @@ const App = () => {
       <PrivateRoute path="/profile" component={CustomerProfile} />
       <PrivateRoute path="/stylists" component={StylistsList} />
       <PrivateRoute path="/users" component={UsersList} />
+      <PrivateRoute path="/stylists/:id/reviews" component={StylistForm} />
     </AppWrapper>
   );
 };
