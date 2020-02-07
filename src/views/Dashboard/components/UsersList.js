@@ -38,7 +38,7 @@ function UsersList ({ fetchUsers, user }) {
                     ))}
                     </div>
                     </Card>
-                    <Button onClick={logout} color="pink">Log Out</Button>
+                    {/* <Button onClick={logout} color="pink">Log Out</Button> */}
                 </div>
             </Wrapper>
         </AppWrapper>

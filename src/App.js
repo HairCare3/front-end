@@ -4,7 +4,7 @@ import React from "react";
 import { Route, Link } from "react-router-dom";
 
 // Using AppWrapper to set font and background for the app
-import { AppWrapper, Box, Linkton } from "bushido-strap";
+import { AppWrapper, Row, Linkton, Button } from "bushido-strap";
 
 // Importing all routes
 import PrivateRoute from "./views/PrivateRoute";
@@ -22,6 +22,7 @@ import User from "./views/Dashboard/components/SingleUser";
 import ReviewsList from "./views/Dashboard/components/ReviewsLists";
 import Review from "./views/Dashboard/components/SingleReview";
 import UpdateReviewForm from "./views/Dashboard/components/UpdateReviewForm";
+import SearchForm from "./views/Dashboard/components/SearchForm";
 
 // Using Web Font Loader for google fonts
 import WebFont from "webfontloader";
@@ -38,15 +39,19 @@ WebFont.load({
 });
 
 const App = () => {
+  const logout = () => {
+    localStorage.removeItem("token")
+};
   
   return (
     <AppWrapper head_font={h_font} font={r_font} m="0 auto">
-      <Box bg="black" p="2rem">
+      <Row justify="flex-end" bg="black" p="2rem">
         <Linkton to="/">Home</Linkton>
         <Linkton to="/stylists">Stylists</Linkton>
         <Linkton to="/users">Users</Linkton>
         <Linkton to="/reviews">Reviews</Linkton>
-      </Box>
+        <Button onClick={logout}>Logout</Button>
+      </Row>
       <PrivateRoute path="/" exact component={Dashboard} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
@@ -61,6 +66,7 @@ const App = () => {
       <PrivateRoute exact path="/reviews" component={ReviewsList} />
       <PrivateRoute path="/reviews/:id" component={Review} />
       <PrivateRoute path="/reviews/:id/update" component={UpdateReviewForm} />
+      <PrivateRoute path="/search" component={SearchForm} />
     </AppWrapper>
   );
 };

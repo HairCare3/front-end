@@ -2,7 +2,7 @@ import React, { useEffect, useState, } from "react";
 import { connect, useDispatch } from "react-redux";
 import { addStylistReviews, deleteReview } from "../../../store/actions/stylists";
 import { useParams, useHistory } from "react-router-dom";
-import { AppWrapper, Wrapper, Form, Input, Button, Col} from "bushido-strap";
+import { AppWrapper, Wrapper, Form, Input, Button } from "bushido-strap";
 import theme from "bushido-strap/styled/theme"
 
 const AddStylistReviews = ({ addStylistReviews }) => {

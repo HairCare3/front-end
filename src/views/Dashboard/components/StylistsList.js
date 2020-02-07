@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import SearchForm from "../components/SearchForm";
 import AddStylistReviews from "../components/AddStylistReviews";
 import { connect } from "react-redux";
 import { fetchStylists } from "../../../store/actions/stylists";
@@ -21,6 +22,7 @@ function StylistsList ({ fetchStylists, stylist }) {
 
     return (
         <AppWrapper bg_src={picture}>
+            <SearchForm stylist={stylist}/>
             <Wrapper>
                 <div>
                     <Card bg={theme.yellow0} m="10rem 0 0 0" color="#DE6F00"><h1>Stylist List</h1>
@@ -37,7 +39,7 @@ function StylistsList ({ fetchStylists, stylist }) {
                         </div>
                     ))}
                     </Card>
-                    <Button bg="orange" onClick={logout}>Log Out</Button>
+                    {/* <Button bg="orange" onClick={logout}>Log Out</Button> */}
                 </div>
             </Wrapper>
         </AppWrapper>
