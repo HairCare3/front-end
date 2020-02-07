@@ -9,7 +9,7 @@ function UsersList ({ fetchUsers, user }) {
 
     useEffect(() => {
         fetchUsers()
-    }, [fetchUsers])
+    }, [fetchUsers]);
 
 
     const logout = () => {
@@ -19,38 +19,38 @@ function UsersList ({ fetchUsers, user }) {
     const picture = "https://disk.megaimg.net/7838817de33e60b4cb623f000dce1252";
 
     return (
-       <AppWrapper m="0 auto" className="img" bg_src={picture}>
-       <Wrapper>
-            <div>
-                <Card bg={theme.red0} color="darkred">
-            <h1>User List</h1>
+       <AppWrapper bg_src={picture}>
+            <Wrapper>
                 <div>
-                {user.map(user => (
-                    <div key={user.id}>
-                        <p>Username: {user.username}</p>
-                        <p>Name: {user.name}</p>
-                        <p>Email: {user.email}</p>
-                        <br></br>
-                        <Link to={`/users/${user.id}`}>
-                            <div>View Profile</div>
-                    </Link>
+                    <Card m="10rem 0 0 0" bg={theme.red0} color="darkred">
+                <h1>User List</h1>
+                    <div>
+                    {user.map(user => (
+                        <div key={user.id}>
+                            <p>Username: {user.username}</p>
+                            <p>Name: {user.name}</p>
+                            <p>Email: {user.email}</p>
+                            <br></br>
+                            <Link to={`/users/${user.id}`}>
+                                <div>View Profile</div>
+                        </Link>
+                        </div>
+                    ))}
                     </div>
-                ))}
+                    </Card>
+                    <Button onClick={logout} color="pink">Log Out</Button>
                 </div>
-                </Card>
-                <Button onClick={logout} color="pink">Log Out</Button>
-            </div>
             </Wrapper>
-            </AppWrapper>
-    )
+        </AppWrapper>
+    );
 };
 
 const mapStateToProps = (state) => {
     console.log("user list", state)
     return({
         user: state.users.userInfo
-    })
-}
+    });
+};
 
 export default connect(mapStateToProps, { fetchUsers })(UsersList);
 

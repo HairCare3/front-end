@@ -1,51 +1,47 @@
-import React, { useEffect, location } from "react";
+import React, { useEffect } from "react";
 import AddStylistReviews from "../components/AddStylistReviews";
-import Stylist from "../components/SingleStylist";
 import { connect } from "react-redux";
-import { fetchStylists, fetchStylistsId } from "../../../store/actions/stylists";
+import { fetchStylists } from "../../../store/actions/stylists";
 import { addStylistReviews } from "../../../store/actions/stylists"
-import { Wrapper } from "bushido-strap";
-import { Link, Route, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AppWrapper, Wrapper, Button, Card } from "bushido-strap";
+import theme from "bushido-strap/styled/theme";
 
-function StylistsList ({ fetchStylists, fetchStylistsId, addStylistReviews, stylist, review }) {
-
-    const { id } = useParams();
+function StylistsList ({ fetchStylists, stylist }) {
 
     useEffect(() => {
         fetchStylists();
-    }, [fetchStylists])
-
-    useEffect(() => {
-        fetchStylistsId();
-    }, [fetchStylistsId]);
+    }, [fetchStylists]);
 
     const logout = () => {
         localStorage.removeItem("token")
     };
 
+    const picture = "https://disk.megaimg.net/d38eaf10505de357abbd3fba9c9db352";
+
     return (
-        <Wrapper>
-            <div>
-            <h1>Stylist List</h1>
+        <AppWrapper bg_src={picture}>
+            <Wrapper>
                 <div>
-                {stylist.map(stylist => (
-                    <div key={stylist.id} id={stylist.id}>
-                        <p>Username: {stylist.username}</p>
-                        <p>Name: {stylist.name}</p>
-                        <p>Email: {stylist.email}</p>
-                        <br></br>
-                        <Link to={`/stylists/${stylist.id}`}>
-                            <div>View Profile</div>
-                    </Link>
-                    </div>
-                ))}
                 
+                    <Card bg={theme.yellow0} m="10rem 0 0 0" color="#DE6F00"><h1>Stylist List</h1>
+                    {stylist.map(stylist => (
+                        <div key={stylist.id} id={stylist.id}>
+                            <p>Username: {stylist.username}</p>
+                            <p>Name: {stylist.name}</p>
+                            <p>Email: {stylist.email}</p>
+                            <br></br>
+                            <Link to={`/stylists/${stylist.id}`}>
+                                <div>View Profile</div>
+                        </Link>
+                        </div>
+                    ))}
+                    </Card>
+                    <Button bg="orange" onClick={logout}>Log Out</Button>
                 </div>
-                <button onClick={logout}>Log Out</button>
-                
-            </div>
-        </Wrapper>
-    )
+            </Wrapper>
+        </AppWrapper>
+    );
 };
 
 const mapStateToProps = (state) => {
@@ -54,8 +50,8 @@ const mapStateToProps = (state) => {
     return({
         stylist: state.stylists.stylists,
         review: state.stylists.reviews
-    })
-}
+    });
+};
 
-export default connect(mapStateToProps, { fetchStylists, fetchStylistsId, addStylistReviews })(StylistsList);
+export default connect(mapStateToProps, { fetchStylists, addStylistReviews })(StylistsList);
 

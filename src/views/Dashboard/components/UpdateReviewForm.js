@@ -40,45 +40,45 @@ const UpdateReviewForm = ({ editReview }) => {
 
     return (
         <AppWrapper bg_src={picture} p="10rem" bg={theme.blue5}>
-                    <Wrapper >
-            <Form direction="row" onSubmit={handleSubmit}>
-                <Col color="white">
-                <Input w="50%" bix_size="border-box"
-                type="text"
-                name="title"
-                placeholder="Review Title"
-                value={review.titile}
-                onChange={handleChange} />
-                <Input 
-                type="text"
-                name="text"
-                placeholder="Enter text here"
-                value={review.text}
-                onChange={handleChange} /> 
-                <label>Stylist Rating
-                <Input
-                type="number"
-                name="stylist_rating" 
-                min="1"
-                max="5"
-                placeholder="1-5"
-                value={review.stylist_rating}
-                onChange={handleChange} />
-                </label>
-                <label> Haircut Rating
-                <Input
-                type="number"
-                name="haircut_rating"
-                min="1"
-                max="5"
-                placeholder="1-5"
-                value={review.haircut_rating}
-                onChange={handleChange} />
-                </label>
-                <Button color="white" bg="blue">Update</Button>
-                </Col>
-            </Form>
-        </Wrapper>
+            <Wrapper >
+                <Form direction="row" onSubmit={handleSubmit}>
+                    <Col color="white">
+                    <Input
+                    type="text"
+                    name="title"
+                    placeholder="Review Title"
+                    value={review.titile}
+                    onChange={handleChange} />
+                    <Input 
+                    type="text"
+                    name="text"
+                    placeholder="Enter text here"
+                    value={review.text}
+                    onChange={handleChange} /> 
+                    <label>Stylist Rating
+                    <Input
+                    type="number"
+                    name="stylist_rating" 
+                    min="1"
+                    max="5"
+                    placeholder="1-5"
+                    value={review.stylist_rating}
+                    onChange={handleChange} />
+                    </label>
+                    <label> Haircut Rating
+                    <Input
+                    type="number"
+                    name="haircut_rating"
+                    min="1"
+                    max="5"
+                    placeholder="1-5"
+                    value={review.haircut_rating}
+                    onChange={handleChange} />
+                    </label>
+                    <Button color="white" bg="blue">Update</Button>
+                    </Col>
+                </Form>
+            </Wrapper>
         </AppWrapper>
     );
 };

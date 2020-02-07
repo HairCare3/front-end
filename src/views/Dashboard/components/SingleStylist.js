@@ -28,12 +28,6 @@ function Stylist ({ fetchStylistsId, stylist, isFetching, error }) {
                 <p>Email: {stylist.email}</p>
                 <p>Location: {stylist.location}</p>
                 <p>Info: {stylist.profile_info}</p>
-                <Link to={`/stylists/${stylist.id}/reviews`}>
-                            <div>View Profile</div>
-                    </Link>
-                {/* <div>
-                <AddStylistReviews />
-                </div> */}
         </div>
         
     )

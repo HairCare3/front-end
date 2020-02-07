@@ -2,14 +2,10 @@ import React, { useEffect, useState, } from "react";
 import { connect, useDispatch } from "react-redux";
 import { addStylistReviews, deleteReview } from "../../../store/actions/stylists";
 import { useParams, useHistory } from "react-router-dom";
+import { AppWrapper, Wrapper, Form, Input, Button, Col} from "bushido-strap";
+import theme from "bushido-strap/styled/theme"
 
-// title: "Review Title", // optional title
-// text: "This is the body text of the review. I have no character limit.",
-// stylist_rating: 4, // integer 1-5
-// haircut_rating: 5, // integer 1-5
-// img_url: "http://images.com/img.png", // optional photo
-// img_description: "This is a photo description, I am not required."
-const AddStylistReviews = ({ addStylistReviews, reviews }) => {
+const AddStylistReviews = ({ addStylistReviews }) => {
 
     const [review, setReview] = useState({
         id: "",
@@ -17,7 +13,8 @@ const AddStylistReviews = ({ addStylistReviews, reviews }) => {
         text: "",
         stylist_rating: "",
         haircut_rating: ""
-    })
+    });
+
     const { id } = useParams();
 
     const dispatch = useDispatch();
@@ -25,7 +22,7 @@ const AddStylistReviews = ({ addStylistReviews, reviews }) => {
 
     useEffect(() => {
         addStylistReviews(id);
-    }, [id])
+    }, [id]);
    
     const handleDelete = (e, id) => {
         e.preventDefault();
@@ -42,7 +39,7 @@ const AddStylistReviews = ({ addStylistReviews, reviews }) => {
         e.preventDefault();
         dispatch(addStylistReviews(id))
         history.push(`/review/${id}`)
-    }
+    };
 
     const handleSubmit = (e, id) => {
         e.preventDefault();
@@ -50,47 +47,53 @@ const AddStylistReviews = ({ addStylistReviews, reviews }) => {
         history.push("/reviews");
     };
 
+    const picture = "https://disk.megaimg.net/dfa0be22876b9845d14399425b68436b";
     return (
-        
-        <div>
+        <AppWrapper bg_src={picture} p="10rem" bg={theme.orange3}>
+            <Wrapper>
             <h2>Review Form</h2>
-        <div>
-        </div>
-            <form onSubmit={handleSubmit}>
-                <input
+            <Form direction="row" onSubmit={handleSubmit}>
+                <>
+                <Input
                 type="text"
                 name="review"
                 placeholder="Review Title"
                 value={review.review}
                 onChange={handleChange} />
-                <input 
+                <Input 
                 type="text"
                 name="text"
                 placeholder="Enter text here"
                 value={review.text}
                 onChange={handleChange} />
-                <input
+                <label>Stylist Rating
+                <Input
                 type="number"
                 name="stylist_rating" 
                 min="1"
                 max="5"
-                placeholder="Stylist Rating 1-5"
+                placeholder="1-5"
                 value={review.stylist_rating}
                 onChange={handleChange} />
-                <input
+                </label>
+                <label>Haircut Rating
+                <Input
                 type="number"
                 name="haircut_rating"
                 min="1"
                 max="5"
-                placeholder="Haircut Rating 1-5"
+                placeholder=" 1-5"
                 value={review.haircut_rating}
                 onChange={handleChange} />
-                <button onClick={handleAdd}>Add</button>
-                <button>Edit</button>
-                <button onClick={handleDelete}>Delete</button>
-            </form>
-        </div>
-    )
+                </label>
+                </>
+                <Button onClick={handleAdd}>Add</Button>
+                <Button>Edit</Button>
+                <Button onClick={handleDelete}>Delete</Button>
+            </Form>
+            </Wrapper>
+        </AppWrapper>
+    );
 };
 
 const mapStateToProps = (state) => {
@@ -98,6 +101,6 @@ const mapStateToProps = (state) => {
     return({
         reviews: state.stylists.reviews
     })
-}
+};
 
 export default connect(mapStateToProps, { addStylistReviews })(AddStylistReviews);
