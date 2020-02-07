@@ -4,9 +4,10 @@ const axiosWithAuth = () => {
     const token = localStorage.getItem("token");
     console.log(token)
     return axios.create({
+        "Content-Ttype": "application/json",
         baseURL: "https://haircare-api-3.herokuapp.com/api",
         headers: {
-            authorization: token 
+            Authorization: token 
         }
     });
 };

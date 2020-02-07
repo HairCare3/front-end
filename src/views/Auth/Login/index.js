@@ -21,19 +21,20 @@ function Login(props) {
   const [credentials, setCredientials] = useState({
     username: "",
     password: ""
-  })
-  console.log("login", props)
+  });
+ 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleChange = e => {
     e.preventDefault();
     setCredientials({...credentials, [e.target.name] : e.target.value})
-  }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(authenticate(credentials));
-    history.push("/users");
+    history.push("/");
   };
 
   return (

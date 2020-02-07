@@ -6,7 +6,7 @@ export default function LandingPage() {
   return (
     <Wrapper>
       <Card p="4rem">
-        <h2>Welcome!</h2>
+        <h2 p="4rem">Welcome!</h2>
         <Linkton green stretch to="/register">
           Register Today!
         </Linkton>

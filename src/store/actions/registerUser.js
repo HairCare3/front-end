@@ -1,6 +1,4 @@
-import React from "react";
 import axios from "axios";
-import axiosWithAuth from "../../utils/axiosWithAuth";
 
 // add user
 export const REGISTER_START = "REGISTER_START";
@@ -14,9 +12,8 @@ export const registerUser = (newAccount) => dispatch => {
     axios
     .post("https://haircare-api-3.herokuapp.com/api/auth/register", newAccount)
     .then(res => {
-        console.log("register user", res);
-        // localStorage.setItem("token", res.data.token)
-        dispatch({ type: REGISTER_SUCCESS })
+        console.log("register user", res.data);
+        dispatch({ type: REGISTER_SUCCESS, payload: res.data })
     })
     .catch(err =>{
         console.log(err);
@@ -27,4 +24,4 @@ export const registerUser = (newAccount) => dispatch => {
 export const signOut = () => dispatch => {
     localStorage.removeItem("token");
     dispatch({ type: SIGN_OUT });
-  };
+};

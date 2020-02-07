@@ -1,4 +1,3 @@
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import axios from "axios";
 
 export const AUTHENTICATE = "AUTHENTICATE",
@@ -9,9 +8,9 @@ export const authenticate = (credentials) => dispatch => {
   axios
   .post("https://haircare-api-3.herokuapp.com/api/auth/login", credentials)
   .then(res => {
-    console.log("authenticate respsonse", res.data.token)
+    console.log("authenticate respsonse", res.data)
     localStorage.setItem("token", res.data.token);
-  dispatch({ type: AUTHENTICATE });
+  dispatch({ type: AUTHENTICATE, payload: res.data });
   })
   .catch(err => {
     console.log(err)
