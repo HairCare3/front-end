@@ -4,7 +4,7 @@ import React from "react";
 import { Route, Link } from "react-router-dom";
 
 // Using AppWrapper to set font and background for the app
-import { AppWrapper, theme } from "bushido-strap";
+import { AppWrapper, Box, Linkton } from "bushido-strap";
 
 // Importing all routes
 import PrivateRoute from "./views/PrivateRoute";
@@ -41,12 +41,12 @@ const App = () => {
   
   return (
     <AppWrapper head_font={h_font} font={r_font} m="0 auto">
-      <div>
-      <Link to="/">Home</Link>
-        <Link to="/stylists">Stylists</Link>
-        <Link to="/users">Users</Link>
-        <Link to="/reviews">Reviews</Link>
-      </div>
+      <Box bg="black" p="2rem">
+        <Linkton to="/">Home</Linkton>
+        <Linkton to="/stylists">Stylists</Linkton>
+        <Linkton to="/users">Users</Linkton>
+        <Linkton to="/reviews">Reviews</Linkton>
+      </Box>
       <PrivateRoute path="/" exact component={Dashboard} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />

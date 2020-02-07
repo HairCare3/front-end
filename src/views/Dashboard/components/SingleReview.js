@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { connect, useDispatch } from "react-redux";
-import { BrowserRouter as Router, Link} from "react-router-dom";
 import { fetchReviewId, removeReview } from "../../../store/actions/reviews";
 import { useHistory } from "react-router";
 import { AppWrapper, Wrapper, Form, Input, Button, Card, Box, Row, Col} from "bushido-strap";
@@ -28,29 +27,35 @@ function Review ({ fetchReviewId, review, isFetching, error }) {
     const handleEditClick = e => {
         e.preventDefault();
         history.push(`/reviews/${review.id}`);
-      };
+    };
 
     if(isFetching){
         return <h2>Loading Review...</h2>
-    }
+    };
+
+    const picture = "https://disk.megaimg.net/06de378d02fc3d95ac465253907943ec";
     
     return ( 
-        <AppWrapper bg={theme.blue3}>
-            <div key={review.id} id={review.id}>
-            {error && <p>{error}</p>}
-            <h3>Title: {review.title}</h3>
+        <AppWrapper bg={theme.blue3} bg_src={picture} m="auto">
+            <Wrapper >
+                <Card w="75%" m="10rem" bg={theme.purple1} color="#330066">
+                <div key={review.id} id={review.id}>
+                {error && <p>{error}</p>}
+                <h3>Title: {review.title}</h3>
                 <p>Text:</p>
                 <p>{review.text}</p>
                 <p>Stylist Rating: {review.stylist_rating}</p>
                 <p>Haircut Rating: {review.haircut_rating}</p>
-                <div>
-                    {/* <button onClick={handleEditClick}>Edit</button>
-                    <button onClick={handleDelete}>Delete</button> */}
+                    {/* <div>
+                        {/* <button onClick={handleEditClick}>Edit</button>
+                        <button onClick={handleDelete}>Delete</button> */}
+                    {/* </div> */}
                 </div>
-        </div>
+                </Card>
+            </Wrapper>
         </AppWrapper>
-    )
-}
+    );
+};
 
 const mapStateToProps = state => {
     console.log("single stylist", state)

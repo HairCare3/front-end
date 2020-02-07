@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { connect } from "react-redux";
 import { fetchUserId } from "../../../store/actions/users";
-import { AppWrapper, Wrapper, Button, Card } from "bushido-strap";
+import { AppWrapper, Wrapper, Card } from "bushido-strap";
 import theme from "bushido-strap/styled/theme";
 
 function User ({ fetchUserId, user, error, isFetching }){
@@ -17,6 +17,7 @@ function User ({ fetchUserId, user, error, isFetching }){
     };
 
     const picture = "https://disk.megaimg.net/643219386dce9821c2d1c9ae99c555ab";
+    
     return (
         <AppWrapper bg_src={picture} m="3rem 0 3rem 0">
             <Wrapper>

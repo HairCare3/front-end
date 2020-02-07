@@ -23,13 +23,13 @@ function StylistsList ({ fetchStylists, stylist }) {
         <AppWrapper bg_src={picture}>
             <Wrapper>
                 <div>
-                
                     <Card bg={theme.yellow0} m="10rem 0 0 0" color="#DE6F00"><h1>Stylist List</h1>
                     {stylist.map(stylist => (
                         <div key={stylist.id} id={stylist.id}>
                             <p>Username: {stylist.username}</p>
                             <p>Name: {stylist.name}</p>
                             <p>Email: {stylist.email}</p>
+                            <p>Location: {stylist.location}</p>
                             <br></br>
                             <Link to={`/stylists/${stylist.id}`}>
                                 <div>View Profile</div>
