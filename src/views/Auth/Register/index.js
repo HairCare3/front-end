@@ -13,11 +13,11 @@ function Register(props) {
   const [newAccount, setNewAccount] = useState({
     name: "",
     email: "",
+    username: "",
     password: "",
     location: "",
     is_stylist: null
   });
-  console.log("register", props);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -30,7 +30,7 @@ function Register(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerUser(newAccount));
-    history.push("/profile");
+    history.push("/");
   };
 
   return (

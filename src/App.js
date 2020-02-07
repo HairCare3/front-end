@@ -40,7 +40,7 @@ WebFont.load({
 const App = () => {
   
   return (
-    <AppWrapper head_font={h_font} font={r_font}>
+    <AppWrapper head_font={h_font} font={r_font} m="0 auto">
       <div>
       <Link to="/">Home</Link>
         <Link to="/stylists">Stylists</Link>

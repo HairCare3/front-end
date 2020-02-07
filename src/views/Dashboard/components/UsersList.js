@@ -1,7 +1,8 @@
 import React, { useEffect, useParams } from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../../../store/actions/users";
-import { Wrapper } from "bushido-strap";
+import { AppWrapper, Wrapper, Form, Input, Button, Card, Box, Row, Col} from "bushido-strap";
+import theme from "bushido-strap/styled/theme"
 import { Link } from "react-router-dom";
 
 function UsersList ({ fetchUsers, user }) {
@@ -13,11 +14,15 @@ function UsersList ({ fetchUsers, user }) {
 
     const logout = () => {
         localStorage.removeItem("token")
-    }
+    };
+
+    const picture = "https://disk.megaimg.net/7838817de33e60b4cb623f000dce1252";
 
     return (
-        <Wrapper>
+       <AppWrapper m="0 auto" className="img" bg_src={picture}>
+       <Wrapper>
             <div>
+                <Card bg={theme.red0} color="darkred">
             <h1>User List</h1>
                 <div>
                 {user.map(user => (
@@ -32,10 +37,11 @@ function UsersList ({ fetchUsers, user }) {
                     </div>
                 ))}
                 </div>
-                
-                <button onClick={logout}>Log Out</button>
+                </Card>
+                <Button onClick={logout} color="pink">Log Out</Button>
             </div>
-        </Wrapper>
+            </Wrapper>
+            </AppWrapper>
     )
 };
 

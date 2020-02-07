@@ -3,6 +3,7 @@ import { REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE, SIGN_OUT } from "..
 const initialState = {
         id: 1,
         name: null,
+        username: null,
         email: null,
         password: null, // will not return in requests
         location: null,
@@ -23,7 +24,7 @@ export const registerUser = (state = initialState, action) => {
         case REGISTER_SUCCESS:
             return {
                 ...state,
-                is_stylist: false
+                is_stylist: action.payload.is_stylist,
             };
         case REGISTER_FAILURE:
             return {
