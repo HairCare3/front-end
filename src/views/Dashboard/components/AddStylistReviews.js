@@ -1,5 +1,4 @@
 import React, { useEffect, useState, } from "react";
-import axiosWithAuth from "../../../utils/axiosWithAuth";
 import { connect, useDispatch } from "react-redux";
 import { addStylistReviews, deleteReview } from "../../../store/actions/stylists";
 import { useParams, useHistory } from "react-router-dom";
@@ -11,7 +10,6 @@ import { useParams, useHistory } from "react-router-dom";
 // img_url: "http://images.com/img.png", // optional photo
 // img_description: "This is a photo description, I am not required."
 const AddStylistReviews = ({ addStylistReviews, reviews }) => {
-    // console.log(props)
 
     const [review, setReview] = useState({
         id: "",
@@ -26,32 +24,37 @@ const AddStylistReviews = ({ addStylistReviews, reviews }) => {
     const history = useHistory();
 
     useEffect(() => {
-        // const review_id = id ? id : 1
         addStylistReviews(id);
     }, [id])
    
     const handleDelete = (e, id) => {
         e.preventDefault();
         dispatch(deleteReview(id));
-        history.push("/stylists");
-    }
+        history.push("/reviews");
+    };
 
     const handleChange = e => {
         e.preventDefault();
         setReview({...review, [e.target.name] : e.target.value})
-      }
+    };
     
+    const handleAdd = (e, id) => {
+        e.preventDefault();
+        dispatch(addStylistReviews(id))
+        history.push(`/review/${id}`)
+    }
 
     const handleSubmit = (e, id) => {
         e.preventDefault();
         dispatch(addStylistReviews(id));
-        history.push("/stylists");
-      };
+        history.push("/reviews");
+    };
 
     return (
         
         <div>
-            <div>
+            <h2>Review Form</h2>
+        <div>
         </div>
             <form onSubmit={handleSubmit}>
                 <input
@@ -82,7 +85,7 @@ const AddStylistReviews = ({ addStylistReviews, reviews }) => {
                 placeholder="Haircut Rating 1-5"
                 value={review.haircut_rating}
                 onChange={handleChange} />
-                <button>Add</button>
+                <button onClick={handleAdd}>Add</button>
                 <button>Edit</button>
                 <button onClick={handleDelete}>Delete</button>
             </form>

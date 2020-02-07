@@ -46,7 +46,7 @@ export const editReview = (id) => dispatch => {
     .put(`/reviews/${id}`)
     .then(res => {
         console.log(res)
-        dispatch({ type: EDIT_REVIEW_SUCCESS, payload: res.data })
+        dispatch({ type: EDIT_REVIEW_SUCCESS, payload: id })
     })
     .catch(err => dispatch({ type: EDIT_REVIEW_FAILURE, payload: err}))
 }

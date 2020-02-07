@@ -30,7 +30,10 @@ function ReviewsList ({ fetchReviews, review }) {
                             <br></br>
                             <Link to={`/reviews/${review.id}`}>
                             <div>View Review</div>
-                    </Link>
+                            </Link>
+                            <Link to={`/stylists/${review.id}/reviews`}>
+                                Add Review/Change Review
+                            </Link>
                         </div>
                     ))}
                 </div>

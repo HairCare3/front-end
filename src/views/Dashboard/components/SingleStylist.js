@@ -11,7 +11,6 @@ function Stylist ({ fetchStylistsId, stylist, isFetching, error }) {
     console.log("single stylist id", id)
 
     useEffect(() => {
-        // fetchStylists();
         fetchStylistsId(id);
     }, [id]);
     

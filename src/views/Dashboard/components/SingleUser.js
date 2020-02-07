@@ -7,7 +7,6 @@ function User ({ fetchUserId, user, error, isFetching }){
     const { id } = useParams();
 
     useEffect(() => {
-        // fetchUsers();
         fetchUserId(id);
     }, [id]);
 

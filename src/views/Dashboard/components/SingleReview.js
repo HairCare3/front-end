@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { BrowserRouter as Router, Link} from "react-router-dom";
-import { fetchReviewId } from "../../../store/actions/reviews";
+import { fetchReviewId, removeReview } from "../../../store/actions/reviews";
+import { useHistory } from "react-router";
 
 function Review ({ fetchReviewId, review, isFetching, error }) {
 
@@ -11,7 +12,21 @@ function Review ({ fetchReviewId, review, isFetching, error }) {
     useEffect(() => {
         fetchReviewId(id);
     }, [id]);
+
+    const dispatch = useDispatch();
+    const history = useHistory();
     
+    const handleDelete = (e, id) => {
+        e.preventDefault();
+        dispatch(removeReview(id));
+        history.push("/reviews");
+    };
+
+    const handleEditClick = e => {
+        e.preventDefault();
+        history.push(`/reviews/${review.id}`);
+      };
+
     if(isFetching){
         return <h2>Loading Review...</h2>
     }
@@ -25,13 +40,12 @@ function Review ({ fetchReviewId, review, isFetching, error }) {
                 <p>{review.text}</p>
                 <p>Stylist Rating: {review.stylist_rating}</p>
                 <p>Haircut Rating: {review.haircut_rating}</p>
-                {/* <Link to={`/stylists/${stylist.id}/reviews`}>
-                            <div>View Profile</div>
-                    </Link> */}
-                {/* <div>
-                <AddStylistReviews />
-                </div> */}
+                <div>
+                    {/* <button onClick={handleEditClick}>Edit</button>
+                    <button onClick={handleDelete}>Delete</button> */}
+                </div>
         </div>
+        
         
     )
 }

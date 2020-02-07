@@ -45,8 +45,6 @@ export const fetchStylistsId = (id) => dispatch => {
     })
 };
 
-// export const get
-
 export const addStylistReviews = (id) => dispatch => {
     dispatch({ type: ADD_REVIEW_START })
     axiosWithAuth()

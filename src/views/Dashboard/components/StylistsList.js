@@ -8,8 +8,6 @@ import { Wrapper } from "bushido-strap";
 import { Link, Route, useParams } from "react-router-dom";
 
 function StylistsList ({ fetchStylists, fetchStylistsId, addStylistReviews, stylist, review }) {
-    // console.log("StylistList props", props)
-    console.log(fetchStylists, fetchStylistsId)
 
     const { id } = useParams();
 
@@ -17,13 +15,7 @@ function StylistsList ({ fetchStylists, fetchStylistsId, addStylistReviews, styl
         fetchStylists();
     }, [fetchStylists])
 
-    // useEffect(() => {
-    //     const review_id = id ? id : 1
-    //     addStylistReviews(review_id);
-    // }, [id])
-
     useEffect(() => {
-        // const stylist_id = id ? id : null
         fetchStylistsId();
     }, [fetchStylistsId]);
 
@@ -36,19 +28,11 @@ function StylistsList ({ fetchStylists, fetchStylistsId, addStylistReviews, styl
             <div>
             <h1>Stylist List</h1>
                 <div>
-                {/* <div key={stylist.id} id={stylist.id}>
-                        <p>Username: {stylist.username}</p>
-                        <p>Name: {stylist.name}</p>
-                        <p>Email: {stylist.email}</p>
-                        <p>Profile: {stylist.profile_info}</p>
-                        <AddStylistReviews review={review} />
-                    </div> */}
                 {stylist.map(stylist => (
                     <div key={stylist.id} id={stylist.id}>
                         <p>Username: {stylist.username}</p>
                         <p>Name: {stylist.name}</p>
                         <p>Email: {stylist.email}</p>
-                        {/* <p>Profile: {stylist.profile_info}</p> */}
                         <br></br>
                         <Link to={`/stylists/${stylist.id}`}>
                             <div>View Profile</div>
@@ -63,22 +47,6 @@ function StylistsList ({ fetchStylists, fetchStylistsId, addStylistReviews, styl
         </Wrapper>
     )
 };
-
-// function StylistDetails (stylist) {
-//     console.log(stylist)
-
-//     const pushstylist = fetchStylists
-//     useEffect(() => {
-//         pushstylist()
-//     }, [pushstylist])
-
-//     return (
-//         <div></div>
-//     //   <Link to={`/stylists/${stylists.id}`}>
-//     //     <StylistCard stylist={stylist.stylist} />
-//     //   </Link>
-//     )
-// }
 
 const mapStateToProps = (state) => {
     console.log(state.stylists.stylists)
