@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import { editReview } from "../../../store/actions/reviews";
-import { AppWrapper, Wrapper, Form, Input, Button, Card, Box, Row, Col} from "bushido-strap";
+import { AppWrapper, Wrapper, Form, Input, Button, Col} from "bushido-strap";
 import theme from "bushido-strap/styled/theme"
 
 const UpdateReviewForm = ({ editReview }) => {
@@ -36,31 +36,27 @@ const UpdateReviewForm = ({ editReview }) => {
           history.push(`/reviews/${review.id}`)
       };
 
-      const picture="https://disk.megaimg.net/7b60cd88376638ce100b15354139d685"
+      const picture="https://disk.megaimg.net/7b60cd88376638ce100b15354139d685";
 
     return (
         <AppWrapper bg_src={picture} p="10rem" bg={theme.blue5}>
                     <Wrapper >
             <Form direction="row" onSubmit={handleSubmit}>
                 <Col color="white">
-                <label>
                 <Input w="50%" bix_size="border-box"
                 type="text"
                 name="title"
                 placeholder="Review Title"
                 value={review.titile}
                 onChange={handleChange} />
-                </label>
-                <label>
-                <Input w="50%" 
+                <Input 
                 type="text"
                 name="text"
                 placeholder="Enter text here"
                 value={review.text}
-                onChange={handleChange} />
-                </label> 
+                onChange={handleChange} /> 
                 <label>Stylist Rating
-                <Input w="50rem"
+                <Input
                 type="number"
                 name="stylist_rating" 
                 min="1"
@@ -70,7 +66,7 @@ const UpdateReviewForm = ({ editReview }) => {
                 onChange={handleChange} />
                 </label>
                 <label> Haircut Rating
-                <Input w="25rem"
+                <Input
                 type="number"
                 name="haircut_rating"
                 min="1"
@@ -79,7 +75,7 @@ const UpdateReviewForm = ({ editReview }) => {
                 value={review.haircut_rating}
                 onChange={handleChange} />
                 </label>
-                <Button>Update</Button>
+                <Button color="white" bg="blue">Update</Button>
                 </Col>
             </Form>
         </Wrapper>

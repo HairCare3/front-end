@@ -4,6 +4,9 @@ import { connect, useDispatch } from "react-redux";
 import { BrowserRouter as Router, Link} from "react-router-dom";
 import { fetchReviewId, removeReview } from "../../../store/actions/reviews";
 import { useHistory } from "react-router";
+import { AppWrapper, Wrapper, Form, Input, Button, Card, Box, Row, Col} from "bushido-strap";
+import theme from "bushido-strap/styled/theme"
+
 
 function Review ({ fetchReviewId, review, isFetching, error }) {
 
@@ -32,8 +35,8 @@ function Review ({ fetchReviewId, review, isFetching, error }) {
     }
     
     return ( 
-
-        <div key={review.id} id={review.id}>
+        <AppWrapper bg={theme.blue3}>
+            <div key={review.id} id={review.id}>
             {error && <p>{error}</p>}
             <h3>Title: {review.title}</h3>
                 <p>Text:</p>
@@ -45,8 +48,7 @@ function Review ({ fetchReviewId, review, isFetching, error }) {
                     <button onClick={handleDelete}>Delete</button> */}
                 </div>
         </div>
-        
-        
+        </AppWrapper>
     )
 }
 
