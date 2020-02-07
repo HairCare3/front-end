@@ -1,7 +1,7 @@
-import React, { useEffect, useParams } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../../../store/actions/users";
-import { AppWrapper, Wrapper, Form, Input, Button, Card, Box, Row, Col} from "bushido-strap";
+import { AppWrapper, Wrapper, Button, Card } from "bushido-strap";
 import theme from "bushido-strap/styled/theme"
 import { Link } from "react-router-dom";
 

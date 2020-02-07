@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
-import { editReview, removeReview } from "../../../store/actions/reviews";
+import { editReview } from "../../../store/actions/reviews";
+import { AppWrapper, Wrapper, Form, Input, Button, Card, Box, Row, Col} from "bushido-strap";
+import theme from "bushido-strap/styled/theme"
 
 const UpdateReviewForm = ({ editReview }) => {
     const [review, setReview] = useState({
@@ -13,7 +15,7 @@ const UpdateReviewForm = ({ editReview }) => {
         text: "",
         stylist_rating: "",
         haircut_rating: ""
-    })
+    });
     const { id } = useParams();
 
     const dispatch = useDispatch();
@@ -28,60 +30,66 @@ const UpdateReviewForm = ({ editReview }) => {
         setReview({...review, [e.target.name] : e.target.value})
       };
 
-
-    //   const handleDelete = (e, id) => {
-    //       e.preventDefault();
-    //       dispatch(removeReview(id));
-    //       history.push("/review")
-    //   }
-
       const handleSubmit = (e, id) => {
           e.preventDefault();
           dispatch(editReview(id));
           history.push(`/reviews/${review.id}`)
       };
 
+      const picture="https://disk.megaimg.net/7b60cd88376638ce100b15354139d685"
+
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
+        <AppWrapper bg_src={picture} p="10rem" bg={theme.blue5}>
+                    <Wrapper >
+            <Form direction="row" onSubmit={handleSubmit}>
+                <Col color="white">
+                <label>
+                <Input w="50%" bix_size="border-box"
                 type="text"
                 name="title"
                 placeholder="Review Title"
                 value={review.titile}
                 onChange={handleChange} />
-                <input 
+                </label>
+                <label>
+                <Input w="50%" 
                 type="text"
                 name="text"
                 placeholder="Enter text here"
                 value={review.text}
                 onChange={handleChange} />
-                <input
+                </label> 
+                <label>Stylist Rating
+                <Input w="50rem"
                 type="number"
                 name="stylist_rating" 
                 min="1"
                 max="5"
-                placeholder="Stylist Rating 1-5"
+                placeholder="1-5"
                 value={review.stylist_rating}
                 onChange={handleChange} />
-                <input
+                </label>
+                <label> Haircut Rating
+                <Input w="25rem"
                 type="number"
                 name="haircut_rating"
                 min="1"
                 max="5"
-                placeholder="Haircut Rating 1-5"
+                placeholder="1-5"
                 value={review.haircut_rating}
                 onChange={handleChange} />
-                {/* <button>Add</button>
-                <button>Edit</button> */}
-                <button>Update</button>
-            </form>
-        </div>
-    )
-}
+                </label>
+                <Button>Update</Button>
+                </Col>
+            </Form>
+        </Wrapper>
+        </AppWrapper>
+    );
+};
+
 const mapStateToProps = state => {
     console.log(state)
     return {}
-}
+};
 
 export default connect(mapStateToProps, { editReview })(UpdateReviewForm);
