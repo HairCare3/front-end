@@ -19,6 +19,7 @@ import UsersList from "./views/Dashboard/components/UsersList";
 import AddStylistReviews from "./views/Dashboard/components/AddStylistReviews";
 import Stylist from "./views/Dashboard/components/SingleStylist";
 import User from "./views/Dashboard/components/SingleUser";
+import ReviewsList from "./views/Dashboard/components/ReviewsLists";
 
 // Using Web Font Loader for google fonts
 import WebFont from "webfontloader";
@@ -42,6 +43,7 @@ const App = () => {
       <Link to="/">Home</Link>
         <Link to="/stylists">Stylists</Link>
         <Link to="/users">Users</Link>
+        <Link to="/reviews">Reviews</Link>
       </div>
       <PrivateRoute path="/" exact component={Dashboard} />
       <Route path="/login" component={Login} />
@@ -54,6 +56,7 @@ const App = () => {
       <PrivateRoute exact path="/stylists/:id/reviews" component={AddStylistReviews} />
       <PrivateRoute exact path="/users" component={UsersList} />
       <PrivateRoute exact path="/users/:id" component={User} />
+      <PrivateRoute exact path="/reviews" component={ReviewsList} />
     </AppWrapper>
   );
 };

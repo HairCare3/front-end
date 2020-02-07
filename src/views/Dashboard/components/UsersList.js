@@ -1,5 +1,4 @@
 import React, { useEffect, useParams } from "react";
-// import StylistCard from "../components/StylistCard";
 import { connect } from "react-redux";
 import { fetchUsers } from "../../../store/actions/users";
 import { Wrapper } from "bushido-strap";
@@ -10,6 +9,7 @@ function UsersList ({ fetchUsers, user }) {
     useEffect(() => {
         fetchUsers()
     }, [fetchUsers])
+
 
     const logout = () => {
         localStorage.removeItem("token")
@@ -25,7 +25,6 @@ function UsersList ({ fetchUsers, user }) {
                         <p>Username: {user.username}</p>
                         <p>Name: {user.name}</p>
                         <p>Email: {user.email}</p>
-                        {/* <p>Profile: {user.profile_info}</p> */}
                         <br></br>
                         <Link to={`/users/${user.id}`}>
                             <div>View Profile</div>
