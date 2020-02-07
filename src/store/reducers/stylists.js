@@ -7,6 +7,7 @@ const initialState = {
     // token: localStorage.getItem("token"),
     error: "",
     isFetching: false,
+    adding_review: false,
     stylists: [
         // {
             // id: 1, // automatically generated
@@ -39,7 +40,7 @@ const initialState = {
             // array of reviews posted by customers
             // review_id: Date.now() + Math.random().toString().slice(2),
             {
-                review_id: "",
+                review_id: Date.now(),
                 customer_id: "",
                 stylist_id: "",
                 photo_id: "",
@@ -98,18 +99,21 @@ export const stylists = (state = initialState, action) => {
                 ...state,
                 isFetching: true,
                 error: "",
+                adding_review: true
             };
         case ADD_REVIEW_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 error: "",
-                reviews: action.payload,
+                adding_review: false,
+                reviews: [...state.reviews, action.payload],
             };
         case ADD_REVIEW_FAILURE:
             return {
                 ...state,
                 isFetching: false,
+                adding_review: false,
                 error: action.payload
             };
         case DELETE_REVIEW_START:

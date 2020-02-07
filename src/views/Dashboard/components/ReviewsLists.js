@@ -4,7 +4,7 @@ import { fetchReviews } from "../../../store/actions/reviews";
 import { Wrapper, AppWrapper, Card } from "bushido-strap";
 import theme from "bushido-strap/styled/theme"
 import { Link } from "react-router-dom";
-
+import AddStylistReviews from "../components/AddStylistReviews"
 
 function ReviewsList ({ fetchReviews, review }) {
     
@@ -31,12 +31,12 @@ function ReviewsList ({ fetchReviews, review }) {
                             <div>View Review</div>
                             </Link>
                             <Link to={`/stylists/${review.id}/reviews`}>
-                                Add Review/Change Review
+                                Add Review
                             </Link>
                         </div>
                     ))}
                 </Card>
-                
+                {/* <AddStylistReviews /> */}
                 {/* <button onClick={logout}>Log Out</button> */}
             </div>
         </Wrapper>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState, } from "react";
 import { connect, useDispatch } from "react-redux";
 import { addStylistReviews, deleteReview } from "../../../store/actions/stylists";
-import { useParams, useHistory } from "react-router-dom";
-import { AppWrapper, Wrapper, Form, Input, Button } from "bushido-strap";
+import { useParams, useHistory, Redirect } from "react-router-dom";
+import { AppWrapper, Wrapper, Form, Input, Button, Row } from "bushido-strap";
 import theme from "bushido-strap/styled/theme"
 
 const AddStylistReviews = ({ addStylistReviews }) => {
@@ -35,24 +35,34 @@ const AddStylistReviews = ({ addStylistReviews }) => {
         setReview({...review, [e.target.name] : e.target.value})
     };
     
-    const handleAdd = (e, id) => {
-        e.preventDefault();
-        dispatch(addStylistReviews(id))
-        history.push(`/review/${id}`)
-    };
+    // const handleAdd = (e, id) => {
+    //     e.preventDefault();
+    //     dispatch(addStylistReviews(id))
+    //     history.push(`/review/${id}`)
+    // };
+    
 
-    const handleSubmit = (e, id) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(addStylistReviews(id));
-        history.push("/reviews");
+        addStylistReviews(setReview);
+        // history.push("/reviews");
+        setReview({
+            id: "",
+            review: "",
+            text: "",
+            stylist_rating: "",
+            haircut_rating: ""
+        });
     };
 
     const picture = "https://disk.megaimg.net/dfa0be22876b9845d14399425b68436b";
     return (
         <AppWrapper bg_src={picture} p="10rem" bg={theme.orange3}>
             <Wrapper>
+            <Row justify="center" color="white">
             <h2>Review Form</h2>
-            <Form direction="row" onSubmit={handleSubmit}>
+            </Row>
+            <Form direction="row" onSubmit={handleSubmit} color="white">
                 <>
                 <Input
                 type="text"
@@ -87,7 +97,7 @@ const AddStylistReviews = ({ addStylistReviews }) => {
                 onChange={handleChange} />
                 </label>
                 </>
-                <Button onClick={handleAdd}>Add</Button>
+                <Button type="submit">Add</Button>
                 <Button>Edit</Button>
                 <Button onClick={handleDelete}>Delete</Button>
             </Form>

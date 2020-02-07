@@ -70,7 +70,8 @@ function Register(props) {
           onChange={handleChange} />
           <Box h="2rem" />
           <CheckBox />
-          <Button green type="submit" stretch>
+          {/* <Button green type="submit" stretch> */}
+          <Button green type="submit" stretch onClick={() => registerUser.is_stylist ? props.history.push("/profile", registerUser) : props.history.push("/stylists-profile", registerUser)}>
             Register
           </Button>
         </Card>
@@ -83,7 +84,8 @@ const mapStateToProps = state => {
   console.log(state.registerUser);
   return ({
     error: state.registerUser.error,
-    loggingIn: state.registerUser.loggingIn
+    loggingIn: state.registerUser.loggingIn,
+    registerUser: state.registerUser
   })
 };
 

@@ -51,7 +51,8 @@ export const addStylistReviews = (id) => dispatch => {
     .post(`/stylists/${id}/reviews`)
     .then(res => {
         console.log("stylist review respsonse", res)
-        dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data })
+        localStorage.setItem("Authorization", res.data.token);
+        dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data.reviews.review_id })
     })
     .catch(err => {
         console.log("stylist review error", err)

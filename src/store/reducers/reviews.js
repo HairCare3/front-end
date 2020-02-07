@@ -52,6 +52,12 @@ export const reviews = (state = initialState, action) => {
             error: action.payload
         };
     case EDIT_REVIEW_START:
+        const editReview = state.reviews.map(review => {
+            if (Number(review.id) === Number(action.id)) {
+                review.resolved = !review.resolved;
+            }
+            return review;
+        });
         return {
             ...state,
             isEditing: true
@@ -60,7 +66,7 @@ export const reviews = (state = initialState, action) => {
         return {
             ...state,
             isEditing: false,
-            reviews: action.payload
+            reviews: [...state.reviews, action.payload]
         };
     case EDIT_REVIEW_FAILURE:
         return {
